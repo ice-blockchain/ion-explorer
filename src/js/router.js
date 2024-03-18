@@ -166,6 +166,8 @@ const router = new VueRouter({
     }],
 });
 
+// TODO: Uncomment this one day
+/*
 router.beforeEach((to, from, next) => {
     // replace main locale prefix with domain root:
     if (to.params.lang === APP_MAIN_LOCALE) {
@@ -181,6 +183,7 @@ router.beforeEach((to, from, next) => {
         next();
     }
 });
+ */
 
 router.afterEach((to, from) => {
     Vue.nextTick(() => {

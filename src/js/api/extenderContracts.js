@@ -37,6 +37,10 @@ export const getAddressTransactions = function (address, { limit = 50, offset = 
  * @return {Promise<Object>}
  */
 export const detectNft = function (address) {
+
+    // TODO: Remove this after implementing the NFT API
+    return [];
+
     return http.get(`nft/${address}`).then(({ data }) => data);
 };
 
@@ -97,8 +101,33 @@ export const getNftItemByCollectionIndex = function (collectionAddress, index) {
  * @return {Promise<Object>}
  */
 export const getJettonInfo = async function (address) {
-    const result = await http.get(`jetton/${address}`).then(({ data }) => data);
-    return Object.freeze(result);
+    // v.1.0
+    // const result = await http.get(`jetton/${address}`).then(({ data }) => data);
+    // return Object.freeze(result);
+
+    // v.2.0
+    let response = await http.get('jetton/masters', {
+        params: {
+            address
+        }
+    });
+
+    response.type = "jetton";
+    response.jetton = response.data.jetton_masters[0];
+    response.metadata = response.jetton.jetton_content;
+    response.jetton.image = {
+        original: response.metadata.image,
+        w72: response.metadata.image,
+        w144: response.metadata.image,
+        w216: response.metadata.image,
+    };
+    response.jetton.name = response.metadata.name;
+    response.jetton.description = response.metadata.description;
+    response.jetton.total_supply = Number(response.jetton.total_supply);
+    response.jetton.is_mutable = response.jetton.mintable;
+    response.jetton.metadata_url = null;
+
+    return response;
 };
 
 /**
@@ -106,8 +135,18 @@ export const getJettonInfo = async function (address) {
  * @return {Promise<String>}
  */
 export const getJettonRawMetadata = function getJettonUnprocessedMetadataInPlainTextFormat(address) {
-    return http.get(`jetton_minter/${address}/raw_metadata`).then((response) => {
-        return JSON.stringify(response.data.metadata, null, 2);
+    // v.1.0
+    // return http.get(`jetton_minter/${address}/raw_metadata`).then((response) => {
+    //     return JSON.stringify(response.data.metadata, null, 2);
+    // });
+
+    // v.2.0
+    return http.get('jetton/masters', {
+        params: {
+            address
+        }
+    }).then((response) => {
+        return JSON.stringify(response.data.jetton_masters[0].jetton_content, null, 2);
     });
 };
 

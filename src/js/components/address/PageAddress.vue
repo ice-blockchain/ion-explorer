@@ -213,9 +213,18 @@ export default {
 
             this.contractTypeVisible = this.wallet.is_active;
 
-            checkAddress(this.address)
-                .then((info) => this.contractExtendedInfo = Object.freeze(info))
-                .catch(e => void e);
+            // v.1.0
+            // checkAddress(this.address)
+            //     .then((info) => this.contractExtendedInfo = Object.freeze(info))
+            //     .catch(e => void e);
+
+            // v.2.0
+            this.contractExtendedInfo = {
+                meta: {
+                    is_scam: false,
+                    is_suspended: false
+                }
+            }
         },
 
         handleLastActivityUpdate(timestamp) {

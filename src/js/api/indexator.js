@@ -1,6 +1,7 @@
 import { TONCENTER_INDEX_API_ENDPOINT, TONCENTER_INDEX_API_KEY } from '~/config.js';
 import { base64ToBytes, toBase64Web, toBase64Rfc } from '~/utils.js';
-import { getAddressTransactions } from './extenderContracts.js'; // TODO
+// v.1.0
+// import { getAddressTransactions } from './extenderContracts.js';
 import axios from 'axios';
 
 // Disable headers if api key is not set. Otherwise
@@ -136,12 +137,32 @@ const prepareTransaction = function(tx, address) {
  * @return {Promise<Array>}
  */
 export const getTransactionsByAddress = async function(address, { limit = 50, offset = 0, end_utime }) {
-    const query = { address, end_utime, limit, offset,
-        include_msg_body: true,
-    };
+    // v.1.0
+    // const query = { address, end_utime, limit, offset,
+    //     include_msg_body: true,
+    // };
 
-    const data = await getAddressTransactions(address, query).catch((e) => {
-        return http.get('getTransactionsByAddress', { params: query }).then(({ data }) => data);
+    // const data = await getAddressTransactions(address, query).catch((e) => {
+    //     return http.get('getTransactionsByAddress', { params: query }).then(({ data }) => data);
+    // });
+
+    // v.2.0
+    const query = {
+        account: address
+    }
+
+    let data = await http.get('transactions', { params: query }).then(({ data }) => data);
+
+    data = data/*.transactions*/.map((item) => {
+        item.utime = item.now;
+        if (item.end_status === "uninit") {
+            item.action_result_code = 0;
+        } else {
+            item.action_result_code =  item.description.action.result_code;
+        }
+
+        item.fee = item.total_fees;
+        return item;
     });
 
     return data.map(tx => prepareTransaction(tx, address));
@@ -152,13 +173,23 @@ export const getTransactionsByAddress = async function(address, { limit = 50, of
  * @return {Promise<Object>}
  */
 export const getTransactionByInMessageHash = async function(msg_hash) {
+    // v.1.0
+    // const query = {
+    //     msg_hash: toBase64Rfc(msg_hash),
+    //     include_msg_body: true,
+    // };
+
+    // const { data } = await http.get('getTransactionByInMessageHash', { params: query })
+
+    // return data[0];
+
+    // v.2.0
     const query = {
-        msg_hash: toBase64Rfc(msg_hash),
-        include_msg_body: true,
+        hash: msg_hash
     };
 
-    const { data } = await http.get('getTransactionByInMessageHash', { params: query })
-    return data[0];
+    const { data } = await http.get('transactions', { params: query });
+    return data.transactions[0];
 };
 
 /**
@@ -166,12 +197,36 @@ export const getTransactionByInMessageHash = async function(msg_hash) {
  * @return {Promise<Object>}
  */
 export const getTransactionByHash = async function(tx_hash) {
+    // v.1.0
+    // const query = {
+    //     tx_hash: toBase64Rfc(tx_hash),
+    //     include_msg_body: true,
+    // };
+
+    // const { data } = await http.get('getTransactionByHash', { params: query });
+
+    // return data[0];
+
+    // v.2.0
     const query = {
-        tx_hash: toBase64Rfc(tx_hash),
-        include_msg_body: true,
+        hash: tx_hash
     };
 
-    const { data } = await http.get('getTransactionByHash', { params: query });
+    let { data } = await http.get('transactions', { params: query });
+    // data = data.transactions;
+
+    data = data.map((item) => {
+        item.utime = item.now;
+        if (item.end_status === "uninit") {
+            item.action_result_code = 0;
+        } else {
+            item.action_result_code =  item.description.action.result_code;
+        }
+
+        item.fee = item.total_fees;
+        return item;
+    });
+
     return data[0];
 };
 

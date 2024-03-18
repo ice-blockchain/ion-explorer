@@ -50,6 +50,13 @@ export const searchApps = (params = {}) => search('projects', params).then(Objec
  * @return {Promise<Object>}
  */
 export const searchAddress = async function(query, params = {}) {
+
+    // TODO: Remove this after implementing the Typesense API
+    return Object.freeze({
+        addresses: [],
+        domains: [],
+    });
+
     // leave only domain names without the to-level domain:
     params.q = query.split('.')[0];
 

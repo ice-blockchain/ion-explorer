@@ -10,7 +10,7 @@ import UiTabs from '~/components/UiTabs.vue';
 export default {
     props: {
         isActive: Boolean,
-        supply: String,
+        supply: Number,
         decimals: Number,
         symbol: String,
         address: {
@@ -34,6 +34,7 @@ export default {
             const props = { address: this.address };
             const key = this.address; // keepalive key
 
+            // TODO: Uncomment this once
             return [{
                 key: 'transactions',
                 text: this.$t('address.tab_transactions'),
@@ -43,7 +44,7 @@ export default {
                     eager: true,
                     component: TxHistory,
                 },
-            }, {
+            }/*, {
                 key: 'holders',
                 text: this.$t('jetton.top_holders'),
                 icon: IconToken,
@@ -69,7 +70,7 @@ export default {
                         isActive: true,
                     },
                 },
-            }];
+            }*/];
         },
     },
 };

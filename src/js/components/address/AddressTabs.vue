@@ -35,6 +35,7 @@ export default {
             const props = { address: this.address };
             const key = this.address; // keepalive key
 
+            // TODO: Uncomment this one day
             return [{
                 key: 'transactions',
                 text: this.$t('address.tab_transactions'),
@@ -44,17 +45,17 @@ export default {
                     eager: true,
                     component: TxHistory,
                 },
-            }, {
+            },/* {
                 key: 'nfts',
                 text: this.$t('address.tab_nfts'),
                 icon: IconNft,
                 content: { key, props, component: TabUserNfts },
-            }, {
+            },*/ {
                 key: 'tokens',
                 text: this.$t('address.tab_tokens'),
                 icon: IconToken,
                 content: { key, props, component: TabUserTokens },
-            }, {
+            }/*, {
                 key: 'source',
                 text: this.$t('address.tab_contract'),
                 icon: IconContract,
@@ -66,7 +67,7 @@ export default {
                         isActive: this.isActive,
                     },
                 },
-            }];
+            }*/];
         },
     },
 };

@@ -123,11 +123,13 @@ new Vue({ router, store, i18n,
     },
 
     created() {
-        if (IS_TESTNET) {
-            return console.debug('Not loading addressbook and exchange rates in testnet mode');
-        }
+        // TODO: Uncomment this, when needed
+        // if (IS_TESTNET) {
+        //     return console.debug('Not loading addressbook and exchange rates in testnet mode');
+        // }
 
-        this.$store.dispatch('getAddrbook');
+        // TODO: Uncomment this, when needed
+        // this.$store.dispatch('getAddrbook');
     },
 
     methods: {
