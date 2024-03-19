@@ -1,5 +1,5 @@
-# TON Blockchain Explorer
-An open source address, block and transaction explorer for [TON Blockchain](https://ton.org).
+# ION Blockchain Explorer
+An open source address, block and transaction explorer for [ION Blockchain](https://ton.org).
 
 
 ### See it in action

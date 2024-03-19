@@ -29,7 +29,7 @@
                             {{$t('address.contract_type.sale.on_sale')}}
                         </template>
                     </a>
-                    <template>{{$ton(contractInfo.sale.price)}} TON</template>
+                    <template>{{$ton(contractInfo.sale.price)}} ION</template>
                 </i18n>
             </span>
         </template>

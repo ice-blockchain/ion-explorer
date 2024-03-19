@@ -83,27 +83,27 @@
                             <div class="card-row">
                                 <div class="card-row__name" v-text="$t('nominator_pool.stake_total')"/>
                                 <div class="card-row__value">
-                                    <span v-if="totalStake === undefined" class="skeleton">10000 TON</span>
+                                    <span v-if="totalStake === undefined" class="skeleton">10000 ION</span>
                                     <template v-else>
-                                        {{$ton(totalStake)}} TON
+                                        {{$ton(totalStake)}} ION
                                     </template>
                                 </div>
                             </div>
                             <div class="card-row">
                                 <div class="card-row__name" v-text="$t('nominator_pool.stake_validator')"/>
                                 <div class="card-row__value">
-                                    <span v-if="poolInfo.validator_amount === undefined" class="skeleton">10000 TON</span>
+                                    <span v-if="poolInfo.validator_amount === undefined" class="skeleton">10000 ION</span>
                                     <template v-else>
-                                        {{$ton(poolInfo.validator_amount)}} TON
+                                        {{$ton(poolInfo.validator_amount)}} ION
                                     </template>
                                 </div>
                             </div>
                             <div class="card-row">
                                 <div class="card-row__name" v-text="$t('nominator_pool.stake_nominators')"/>
                                 <div class="card-row__value">
-                                    <span v-if="totalNominatorStake === undefined" class="skeleton">10000 TON</span>
+                                    <span v-if="totalNominatorStake === undefined" class="skeleton">10000 ION</span>
                                     <template v-else>
-                                        {{$ton(totalNominatorStake)}} TON
+                                        {{$ton(totalNominatorStake)}} ION
                                     </template>
                                 </div>
                             </div>
@@ -139,14 +139,14 @@
                                 <div class="card-row__name" v-text="$t('nominator_pool.min_stake_validator')"/>
                                 <div class="card-row__value">
                                     <span v-if="poolInfo.min_validator_stake === undefined" class="skeleton">10000</span>
-                                    <template v-else>{{$ton(poolInfo.min_validator_stake)}} TON</template>
+                                    <template v-else>{{$ton(poolInfo.min_validator_stake)}} ION</template>
                                 </div>
                             </div>
                             <div class="card-row">
                                 <div class="card-row__name" v-text="$t('nominator_pool.min_stake_nominator')"/>
                                 <div class="card-row__value">
                                     <span v-if="poolInfo.min_nominator_stake === undefined" class="skeleton">10000</span>
-                                    <template v-else>{{$ton(poolInfo.min_nominator_stake)}} TON</template>
+                                    <template v-else>{{$ton(poolInfo.min_nominator_stake)}} ION</template>
                                 </div>
                             </div>
                         </div>

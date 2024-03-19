@@ -2,17 +2,17 @@ export default {
     header: {
         search_placeholder: 'Поиск по адресу или домену',
         search_domain_error: 'Домен не существует либо к нему не привязан адрес кошелька',
-        search_address_error: 'Введите адрес TON или домен в зоне .ton',
+        search_address_error: 'Введите адрес ION или домен в зоне .ton',
     },
 
     indexpage: {
         meta: {
-            title: 'TONScan — универсальный обозреватель для блокчейна TON',
-            description: 'Вся информация по блокчейну TON в доступном и удобном виде на платформе TONScan. Ищите транзакции, адреса, пулы, номинаторов и многое другое.',
+            title: 'IONScan — универсальный обозреватель для блокчейна ION',
+            description: 'Вся информация по блокчейну ION в доступном и удобном виде на платформе IONScan. Ищите транзакции, адреса, пулы, номинаторов и многое другое.',
         },
-        search_placeholder: 'Поиск адресов TON, доменов и транзакций...',
+        search_placeholder: 'Поиск адресов ION, доменов и транзакций...',
         search_domain_error: 'Домен не существует либо к нему не привязан адрес кошелька',
-        search_address_error: 'Введите адрес TON или домен в зоне .ton',
+        search_address_error: 'Введите адрес ION или домен в зоне .ton',
     },
 
     search: {
@@ -38,7 +38,7 @@ export default {
 
     address: {
         meta: {
-            title: 'Адрес {address} в TON · TONScan',
+            title: 'Адрес {address} в ION · IONScan',
             description: 'Подробная информация об адресе {address}: баланс, транзакции и другая информация. Отслеживайте данные в режиме реального времени.',
         },
 
@@ -171,7 +171,7 @@ export default {
 
     tx: {
         meta: {
-            title: 'Эксплорер TON :: Транзакция {hash}',
+            title: 'Эксплорер ION :: Транзакция {hash}',
         },
         title: 'Информация о транзакции',
         account: 'Аккаунт',
@@ -229,8 +229,8 @@ export default {
     nft: {
         collection: {
             meta: {
-                title: 'NFT-коллекция {name} :: TON Explorer',
-                description: 'Просмотр {count} NFT-итемов из коллекции {name} в эксплорере TON.',
+                title: 'NFT-коллекция {name} :: ION Explorer',
+                description: 'Просмотр {count} NFT-итемов из коллекции {name} в эксплорере ION.',
             },
             item_count: 'Пусто | {n} штука | {n} штуки | {n} штук',
             empty_collection_header: 'Пустая коллекция',
@@ -242,8 +242,8 @@ export default {
         },
         item: {
             meta: {
-                title: 'NFT-итем {name} (номер {index}) :: Эксплорер TON',
-                title_standalone: 'NFT-итем {name} :: Эксплорер TON',
+                title: 'NFT-итем {name} (номер {index}) :: Эксплорер ION',
+                title_standalone: 'NFT-итем {name} :: Эксплорер ION',
             },
             collection: 'Коллекция',
             no_collection: 'Без коллекции',
@@ -294,10 +294,10 @@ export default {
         title_help_link: 'https://tonblockchain.ru/p/063aba1f-a01d-4661-9c61-390b3c1dd8c2',
         button_loading: 'Загрузка...',
         button_disabled: 'Нет свободных слотов',
-        button_add_stake: 'Вложить TON',
-        button_send_ton: 'Отправить TON',
+        button_add_stake: 'Вложить ION',
+        button_send_ton: 'Отправить ION',
         help_text_disabled: 'невозможно добавить стейк: нет свободных слотов',
-        help_text_add_stake: 'отправьте не менее <b>{0} TON</b> с текстом &laquo;<b>d</b>&raquo; в комментарии',
+        help_text_add_stake: 'отправьте не менее <b>{0} ION</b> с текстом &laquo;<b>d</b>&raquo; в комментарии',
         validator: 'Валидатор',
         nominator_count: 'Номинаторы',
         nominator_count_value: '{count} из {total}',
@@ -461,7 +461,7 @@ export default {
         validators_amount: 'Валидаторов',
         validators_election: 'Следующий раунд {n}',
         market_data: 'Рыночные данные',
-        price: 'Цена TON',
+        price: 'Цена ION',
         capitalization: 'Капитализация',
         trading_volume: 'Объём торгов',
         contract_types: 'Типы контрактов',
@@ -586,9 +586,9 @@ export default {
         state_flags: 'State flags',
         bridge_burn_fee: 'Bridge burn fee',
         bridge_mint_fee: 'Bridge mint fee',
-        wallet_min_tons_for_storage: 'Min. TON for storage in wallet',
+        wallet_min_tons_for_storage: 'Min. ION for storage in wallet',
         wallet_gas_consumption: 'Wallet gas consumption',
-        minter_min_tons_for_storage: 'Minter min. TON for storage',
+        minter_min_tons_for_storage: 'Minter min. ION for storage',
         discover_gas_consumption: 'Discover gas consumption',
         param_0: {
             title: 'Config address',
@@ -608,7 +608,7 @@ export default {
         },
         param_4: {
             title: 'Root DNS Contract',
-            description: 'This parameter is the address of the root DNS contract of the TON network.',
+            description: 'This parameter is the address of the root DNS contract of the ION network.',
         },
         param_5: {
             title: 'Blackhole address',
@@ -632,15 +632,15 @@ export default {
         },
         param_10: {
             title: 'Critical parameters',
-            description: 'This parameter represents a list (binary tree) of critical TON parameters, the change of which significantly affects the network, so more voting rounds are held.',
+            description: 'This parameter represents a list (binary tree) of critical ION parameters, the change of which significantly affects the network, so more voting rounds are held.',
         },
         param_11: {
             title: 'Proposal conditions',
-            description: 'This parameter indicates under what conditions proposals to change the TON configuration are accepted.',
+            description: 'This parameter indicates under what conditions proposals to change the ION configuration are accepted.',
         },
         param_12: {
             title: 'Workchain configuration',
-            description: 'This parameter represents the configuration of a workchain in the TON Blockchain. Workchains are designed as independent blockchains that can operate in parallel, allowing TON to scale and process a very large number of transactions and smart contracts.',
+            description: 'This parameter represents the configuration of a workchain in the ION Blockchain. Workchains are designed as independent blockchains that can operate in parallel, allowing ION to scale and process a very large number of transactions and smart contracts.',
         },
         param_13: {
             title: 'Complaints fee',
@@ -648,31 +648,31 @@ export default {
         },
         param_14: {
             title: 'Block reward',
-            description: 'This parameter represents the reward for block creation in the TON Blockchain.',
+            description: 'This parameter represents the reward for block creation in the ION Blockchain.',
         },
         param_15: {
             title: 'Election data',
-            description: "This parameter contains the duration of different stages of elections and validators' work in the TON Blockchain.",
+            description: "This parameter contains the duration of different stages of elections and validators' work in the ION Blockchain.",
         },
         param_16: {
             title: 'Validators count',
-            description: 'This parameter represents the limits on the number of validators in the TON Blockchain. ',
+            description: 'This parameter represents the limits on the number of validators in the ION Blockchain. ',
         },
         param_17: {
             title: 'Staking parameters',
-            description: 'This parameter represents the stake parameters configuration in the TON Blockchain. In many blockchain systems, especially those using the Proof-of-Stake or Delegated Proof-of-Stake consensus algorithm, cryptocurrency owners native to the network can "stake" their tokens to become validators and earn rewards.',
+            description: 'This parameter represents the stake parameters configuration in the ION Blockchain. In many blockchain systems, especially those using the Proof-of-Stake or Delegated Proof-of-Stake consensus algorithm, cryptocurrency owners native to the network can "stake" their tokens to become validators and earn rewards.',
         },
         param_18: {
             title: 'Storage price',
-            description: 'This parameter represents the configuration for determining the prices for data storage on the TON Blockchain. This serves as a measure to prevent spam and encourages network maintenance.',
+            description: 'This parameter represents the configuration for determining the prices for data storage on the ION Blockchain. This serves as a measure to prevent spam and encourages network maintenance.',
         },
         param_20: {
             title: 'Gas params',
-            description: 'This parameter defines the cost of computations in the TON network. The complexity of any computation is estimated in gas units.',
+            description: 'This parameter defines the cost of computations in the ION network. The complexity of any computation is estimated in gas units.',
         },
         param_21: {
             title: 'Masterchain gas params',
-            description: 'This parameter defines the cost of computations in the TON network. The complexity of any computation is estimated in gas units.',
+            description: 'This parameter defines the cost of computations in the ION network. The complexity of any computation is estimated in gas units.',
         },
         param_22: {
             title: 'Masterchain block limits',
@@ -684,7 +684,7 @@ export default {
         },
         param_24: {
             title: 'Masterchain message cost',
-            description: 'Represents the configuration for the cost of sending messages in the masterchain of the TON Blockchain.',
+            description: 'Represents the configuration for the cost of sending messages in the masterchain of the ION Blockchain.',
         },
         param_25: {
             title: 'Workchain message cost',
@@ -692,11 +692,11 @@ export default {
         },
         param_28: {
             title: 'Catchain configuration',
-            description: 'This parameter provides the configuration for the Catchain protocol in the TON Blockchain. ',
+            description: 'This parameter provides the configuration for the Catchain protocol in the ION Blockchain. ',
         },
         param_29: {
             title: 'Consensus configuration',
-            description: 'This parameter provides the configuration for the consensus protocol above catchain (Param 28) in the TON Blockchain.',
+            description: 'This parameter provides the configuration for the consensus protocol above catchain (Param 28) in the ION Blockchain.',
         },
         param_31: {
             title: 'Preferential addresses',
@@ -716,7 +716,7 @@ export default {
         },
         param_40: {
             title: 'Validators fine',
-            description: 'This parameter defines the structure of the configuration for punishment for improper behavior (non-validation). In the absence of the parameter, the default fine size is 101 TON.',
+            description: 'This parameter defines the structure of the configuration for punishment for improper behavior (non-validation). In the absence of the parameter, the default fine size is 101 ION.',
         },
         param_43: {
             title: 'Size limits',
@@ -728,27 +728,27 @@ export default {
         },
         param_71: {
             title: 'ETH Toncoin Bridge',
-            description: 'This parameter contains the bridge configuration for wrapping TON in Ethereum blockchain and back.',
+            description: 'This parameter contains the bridge configuration for wrapping ION in Ethereum blockchain and back.',
         },
         param_72: {
             title: 'BSC Toncoin Bridge',
-            description: 'This parameter contains the bridge configuration for wrapping TON in Binance Smart Chain and back.',
+            description: 'This parameter contains the bridge configuration for wrapping ION in Binance Smart Chain and back.',
         },
         param_73: {
             title: 'Polygon Toncoin Bridge',
-            description: 'This parameter contains the bridge configuration for wrapping TON in Polygon blockchain and back.',
+            description: 'This parameter contains the bridge configuration for wrapping ION in Polygon blockchain and back.',
         },
         param_79: {
             title: 'ETH Bridge',
-            description: 'This parameter pertains to bridges for wrapping tokens from Etherum into tokens on the TON Blockchain.',
+            description: 'This parameter pertains to bridges for wrapping tokens from Etherum into tokens on the ION Blockchain.',
         },
         param_81: {
             title: 'BSC Bridge',
-            description: 'This parameter pertains to bridges for wrapping tokens from Binance Smart Chain into tokens on the TON Blockchain.',
+            description: 'This parameter pertains to bridges for wrapping tokens from Binance Smart Chain into tokens on the ION Blockchain.',
         },
         param_82: {
             title: 'Polygon Bridge',
-            description: 'This parameter pertains to bridges for wrapping tokens from Polygon into tokens on the TON Blockchain.',
+            description: 'This parameter pertains to bridges for wrapping tokens from Polygon into tokens on the ION Blockchain.',
         },
     },
 

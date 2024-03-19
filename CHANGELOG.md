@@ -58,7 +58,7 @@
 - Added actions (opcodes) to transaction list
 
 ## 0.0.22 (January 04, 2023)
-- TON Storage provider support
+- ION Storage provider support
 - Added onchain metadata viewer
 
 ## 0.0.21 (December 30, 2022)
@@ -149,7 +149,7 @@
 - Code is published on GitHub
 
 ## 0.0.4 (March 03, 2022)
-- Added TON icon and SCAM support to addrbook.json
+- Added ION icon and SCAM support to addrbook.json
 - Added QR code button to address page
 
 ## 0.0.3 (February 20, 2022)

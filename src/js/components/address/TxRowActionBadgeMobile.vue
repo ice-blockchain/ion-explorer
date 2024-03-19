@@ -30,12 +30,12 @@
                     </span>
                 </template>
                 <template v-else>
-                    {{ $ton(amount, undefined, true) }} TON
+                    {{ $ton(amount, undefined, true) }} ION
                 </template>
             </template>
 
             <template v-else class="muted">
-                {{ $ton(amount) }} TON
+                {{ $ton(amount) }} ION
             </template>
         </div>
 

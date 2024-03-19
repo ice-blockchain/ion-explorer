@@ -6,7 +6,7 @@
                 <icon-excesses class="tx-row-msg-action__icon"/> Excess
             </span>
 
-            {{$ton(amount)}} TON
+            {{$ton(amount)}} ION
         </template>
 
         <!-- jetton actions: -->
@@ -54,7 +54,7 @@
                     <icon-unstake class="tx-row-msg-action__icon"/> Recover stake
                 </span>
 
-                {{$ton(amount, undefined, true)}} TON
+                {{$ton(amount, undefined, true)}} ION
             </template>
 
             <template v-else-if="action.type === 'pool:recover_stake_ok'">
@@ -62,7 +62,7 @@
                     <icon-confirmation class="tx-row-msg-action__icon"/> Stake recovered
                 </span>
 
-                {{$ton(amount, undefined, true)}} TON
+                {{$ton(amount, undefined, true)}} ION
             </template>
 
             <template v-else-if="action.type === 'pool:new_stake'">
@@ -75,7 +75,7 @@
                     </template>
                 </span>
 
-                {{$ton(amount, undefined, true)}} TON
+                {{$ton(amount, undefined, true)}} ION
             </template>
 
             <template v-else-if="action.type === 'pool:new_stake_ok'">
@@ -91,7 +91,7 @@
                     <icon-service-action class="tx-row-msg-action__icon"/> Update validator
                 </span>
 
-                {{$ton(amount, undefined, true)}} TON
+                {{$ton(amount, undefined, true)}} ION
             </template>
 
             <template v-else-if="action.type === 'pool:process_withdraw_requests'">
@@ -99,7 +99,7 @@
                     <icon-service-action class="tx-row-msg-action__icon"/> Process withdraws
                 </span>
 
-                {{$ton(amount, undefined, true)}} TON
+                {{$ton(amount, undefined, true)}} ION
             </template>
         </template>
 
@@ -109,7 +109,7 @@
                 <icon-service-action class="tx-row-msg-action__icon"/> {{action.type}}
             </span>
 
-            {{$ton(amount)}} TON
+            {{$ton(amount)}} ION
         </template>
     </span>
 </template>

@@ -28,7 +28,7 @@
                     <div class="card-row__name" v-text="$t('address.info.balance')"/>
                     <div class="card-row__value" v-if="wallet.balance == '0' || wallet.balance">
                         {{$ton(wallet.balance)}}
-                        <span v-text="addressMeta.tonIcon || 'TON'" title="TON"/>
+                        <span v-text="addressMeta.tonIcon || 'ION'" title="ION"/>
 
                         <template v-if="wallet.balance != '0'">
                             <span v-if="$store.state.exchangeRate" style="color: #717579">
@@ -37,7 +37,7 @@
                         </template>
                     </div>
                     <div v-else class="card-row__value">
-                        <span class="skeleton">00000 TON ≈ 00000 USD</span>
+                        <span class="skeleton">00000 ION ≈ 00000 USD</span>
                     </div>
                 </div>
 

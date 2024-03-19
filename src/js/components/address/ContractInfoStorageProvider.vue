@@ -10,7 +10,7 @@
                 </template>
             </i18n>
             
-            <strong style="margin: 0 0.6ex">{{ratePerBytesPerTimeframe}} TON</strong>
+            <strong style="margin: 0 0.6ex">{{ratePerBytesPerTimeframe}} ION</strong>
 
             <i18n path="address.contract_type.storage_provider.bytes_template">
                 <template v-slot:value>

@@ -75,7 +75,7 @@ export default {
         const category = this.categories.find(({ slug }) => slug === this.currentCategory);
 
         return {
-            title: `TON Explorer :: ${category?.name}`,
+            title: `ION Explorer :: ${category?.name}`,
         };
     },
 

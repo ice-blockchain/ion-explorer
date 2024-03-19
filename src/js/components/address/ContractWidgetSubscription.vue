@@ -22,7 +22,7 @@
         <div class="card-row">
             <div class="card-row__name" v-text="$t('subscription.price')"/>
             <div class="card-row__value">
-                {{$ton(amount)}} TON
+                {{$ton(amount)}} ION
                 <template v-if="paymentPeriod">
                     {{$t(`subscription.period.${paymentPeriod}`)}}
                 </template>

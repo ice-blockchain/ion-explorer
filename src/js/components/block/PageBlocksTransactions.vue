@@ -55,7 +55,7 @@
                     <td>
                         <div class="tx-table__cell tx-table__cell--align-right">
                             <span v-if="tx.amount === null || tx.is_external" class="muted" v-text="$t('common.empty')"/>
-                            <span v-else-if="tx.amount">{{ $ton(tx.amount) }} TON</span>
+                            <span v-else-if="tx.amount">{{ $ton(tx.amount) }} ION</span>
                         </div>
                     </td>
                 </tr>

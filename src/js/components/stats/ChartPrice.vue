@@ -179,7 +179,7 @@ export default {
         type: "bar",
         yAxisID: "volume",
         label: this.$t("stats.volume"),
-        suffix: " TON",
+        suffix: " ION",
         parsing: false,
       });
 
