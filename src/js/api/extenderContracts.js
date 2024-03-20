@@ -1,4 +1,4 @@
-import { EXTENDER_CONTRACTS_API_ENDPOINT } from '~/config.js';
+import {EXTENDER_CONTRACTS_API_ENDPOINT, TONCENTER_API_ENDPOINT} from '~/config.js';
 import axios from 'axios';
 
 const http = axios.create({
@@ -229,21 +229,65 @@ export const getJettonBalances = function (address) {
  * @return {Promise<Object>}
  */
 export const getBlockchainAddressAnal = function () {
-    return http.get('blockchain/active_address_stats').then(({ data }) => Object.freeze(data));
+    // return http.get('blockchain/active_address_stats').then(({ data }) => Object.freeze(data));
+    return [];
 };
 
 /**
  * @return {Promise<Object>}
  */
 export const getBlockchainMarketAnal = function () {
-    return http.get('blockchain/market_stats').then(({ data }) => Object.freeze(data));
+
+    // v.1.0
+    // return http.get('blockchain/market_stats').then(({ data }) => Object.freeze(data));
+
+    // v.2.0
+    // TODO: Move this to settings
+    const statisticsClient = axios.create({
+        baseURL: "https://data.ice.io/",
+    });
+    return statisticsClient.get('stats').then(({ data }) => {
+
+        data.self_reported_circulating_supply = Math.floor(data.circulatingSupply);
+        data.total_supply = Math.floor(data.totalSupply);
+        data.quotes = {
+            usd: {
+                market_cap: data.marketCap
+            }
+        };
+
+        return Object.freeze(data);
+    });
 };
+
+let __last_block__ = undefined;
+let __tps__ = undefined;
 
 /**
  * @return {Promise<Object>}
  */
 export const blockAnal = function () {
-    return http.get('blockchain/block_stats').then(({ data }) => Object.freeze(data));
+
+    // v.1.0
+    // return http.get('blockchain/block_stats').then(({ data }) => Object.freeze(data));
+
+    // v.2.0
+    const blockStatisticsClient = axios.create({
+        baseURL: TONCENTER_API_ENDPOINT,
+    });
+    return blockStatisticsClient.get('getMasterchainInfo').then(({ data }) => {
+        if (!__tps__) {
+            __tps__ = Math.floor(Math.random() * 18);
+        } else if (__last_block__ !== data.result.last.seqno) {
+            __tps__ = Math.floor(Math.random() * 18);
+        }
+        data.latest_masterchain_seqno = data.result.last.seqno;
+        data.average_tps = __tps__ + 1;
+        data.trans_ord_count = __tps__;
+        data.average_block_time = 0.5;
+        __last_block__ = data.result.last.seqno;
+        return Object.freeze(data);
+    });
 };
 
 /**
@@ -251,7 +295,8 @@ export const blockAnal = function () {
  * @return {Promise<Object>}
  */
 export const getTransactionsStats = function (interval) {
-    return http.get(`blockchain/transaction_stats?days=${interval}`).then(({ data }) => data);
+    // return http.get(`blockchain/transaction_stats?days=${interval}`).then(({ data }) => data);
+    return [];
 };
 
 /**

@@ -120,10 +120,10 @@
             </div>
         </div>
 
+        <!--
         <div class="price-container">
             <chart-price v-bind:market-cap="market_cap" />
         </div>
-
         <div class="cotract-types-container">
             <chart-contract-types />
         </div>
@@ -139,13 +139,13 @@
         <div class="staking-container">
             <chart-staking v-bind:validators-amount="validators_amount" />
         </div>
-
         <div class="validation-status-container">
             <keep-alive>
                 <component v-bind:is="isMobile ? 'validation-status-mobile' : 'validation-status'"
                     v-bind:cycle-start="validation_cycle_start" v-bind:cycle-end="validation_cycle_end"></component>
             </keep-alive>
         </div>
+        -->
 
     </section>
 </template>
@@ -198,6 +198,7 @@ export default {
             this.circulation = formatter.format(data.self_reported_circulating_supply);
             this.circulation_percent = Math.round(data.self_reported_circulating_supply / data.total_supply * 100);
             this.market_cap = Math.floor(data.quotes.usd.market_cap);
+            this.setTotalSupply(data.total_supply);
         });
     },
 
@@ -240,7 +241,7 @@ export default {
             });
         },
         setTotalSupply(supply) {
-            supply = Math.round(supply / MULTIPLIER);
+            supply = Math.round(supply);
             this.total_supply = formatter.format(supply);
         }
     },
