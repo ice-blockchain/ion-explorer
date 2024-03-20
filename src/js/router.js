@@ -128,7 +128,7 @@ const router = new VueRouter({
             component: PageSingleNominator,
             props: true,
             meta: { title: 'ION Explorer :: Single Nominator Pool' },
-        }, {
+        }, /*{
             name: 'suspended',
             path: 'suspended',
             component: PageSuspended,
@@ -162,7 +162,7 @@ const router = new VueRouter({
                 component: AppWrapper,
                 props: true,
             }],
-        }],
+        }*/],
     }],
 });
 

@@ -118,7 +118,6 @@ export default {
             this.lastBlockTime = this.masterchainBlocks[0].gen_utime - this.masterchainBlocks[1].gen_utime;
 
             this.averageTps = this.blocks.reduce((acc, val) => acc + val.tx_count, 0) / takeCount;
-            this.averageTps = this.averageTps;
 
             if (!isNaN(this.totalTx)) {
                 this.totalTx += this.masterchainBlocks[0].tx_count;

@@ -25,7 +25,7 @@ const http = axios.create({
  * @return {Promise<Array>}
  */
 export const getPreviousBlocks = async function ({ wc, limit, offset, startUtime, endUtime }) {
-    const { data: result } = await http.get('v1/blocks', {
+    const { data: result } = await http.get('blocks', {
         params: {
             workchain: wc,
             limit: limit || 1,
@@ -64,7 +64,7 @@ const getSourceAndDestination = function (msg, address, hash) {
  * @return {Promise<Array>}
  */
 export const getAllTransactions = async function ({ wc, limit, startUtime, endUtime } = {}) {
-    const { data: result } = await http.get('v1/transactions', {
+    const { data: result } = await http.get('transactions', {
         params: {
             workchain: wc,
             limit: limit,

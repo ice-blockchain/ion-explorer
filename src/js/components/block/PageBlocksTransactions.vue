@@ -156,7 +156,11 @@ export default {
 
     methods: {
         async loadNewTransactions() {
-            const lastTxTimestamp = this.transactions[0].created_at + 1;
+
+            let lastTxTimestamp = 0;
+            if (this.transactions[0]) {
+                lastTxTimestamp = this.transactions[0].created_at + 1;
+            }
 
             const newTxs = await getAllTransactions({
                 wc: this.workchain,
