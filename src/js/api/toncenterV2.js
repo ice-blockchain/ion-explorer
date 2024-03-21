@@ -25,7 +25,7 @@ const http = axios.create({
  * @return {Promise<Array>}
  */
 export const getPreviousBlocks = async function ({ wc, limit, offset, startUtime, endUtime }) {
-    const { data: result } = await http.get('blocks', {
+    let { data: result } = await http.get('blocks', {
         params: {
             workchain: wc,
             limit: limit || 1,
@@ -39,6 +39,13 @@ export const getPreviousBlocks = async function ({ wc, limit, offset, startUtime
     result.forEach((block) => {
         block.root_hash_hex = block.root_hash;
         block.root_hash = hexToBase64(block.root_hash);
+    });
+
+    result = result.filter((block) => {
+        if (!block) {
+            return false;
+        }
+        return block.tx_count > 0;
     });
 
     return result.map(Object.freeze);

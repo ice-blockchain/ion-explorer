@@ -120,8 +120,12 @@ export default {
             this.averageTps = this.blocks.reduce((acc, val) => acc + val.tx_count, 0) / takeCount;
 
             if (!isNaN(this.totalTx)) {
-                this.totalTx += this.masterchainBlocks[0].tx_count;
-                this.totalTx += this.workchainBlocks[0].tx_count;
+                if (this.masterchainBlocks.length) {
+                    this.totalTx += this.masterchainBlocks[0].tx_count;
+                }
+                if (this.workchainBlocks.length) {
+                    this.totalTx += this.workchainBlocks[0].tx_count;
+                }
             }
         },
 
