@@ -41,7 +41,7 @@
                         </td>
                         <td>
                             <div class="tx-table__cell tx-table__cell--align-right">
-                                {{$ton(nominator.amount)}} ION
+                                {{$ton(nominator.amount)}} ICE
                             </div>    
                         </td>
                         <td>
@@ -51,7 +51,7 @@
                         </td>
                         <td>
                             <div class="tx-table__cell tx-table__cell--align-right">
-                                {{$ton(nominator.pending_deposit_amount)}} ION
+                                {{$ton(nominator.pending_deposit_amount)}} ICE
                             </div>    
                         </td>
                         <td>

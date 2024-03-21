@@ -61,7 +61,7 @@
                 </div>
             </td>
 
-            <!-- Transaction value (ION amount or action): -->
+            <!-- Transaction value (ICE amount or action): -->
             <td>
                 <div class="tx-table__cell tx-table__cell--align-right" style="position: relative; padding-right: 26px;" v-bind:title="comment">
                     <action-badge
@@ -75,7 +75,7 @@
 
                     <template v-else>
                         <template v-if="is_service || is_external">N/A</template>
-                        <template v-else>{{$ton(amount)}} ION</template>
+                        <template v-else>{{$ton(amount)}} ICE</template>
                     </template>
                     
                     <icon-encrypted-message v-once class="tx-table-operation-icon" v-if="op == 0x2167da4b"/>
@@ -133,7 +133,7 @@
 
                     <div class="tx-table-inner">
                         <div class="tx-table-inner__header" v-text="$t('tx.fee')"/>
-                        {{$ton(fee)}} ION
+                        {{$ton(fee)}} ICE
                     </div>
 
                     <div v-if="comment" class="tx-table-inner">

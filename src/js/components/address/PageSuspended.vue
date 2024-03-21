@@ -26,7 +26,7 @@
                         <tr v-for="i in 20">
                             <td><div class="tx-table__cell tx-table__cell--align-right"><span class="skeleton">1000</span></div></td>
                             <td><div class="tx-table__cell"><span class="skeleton" style="width: 65%;">EQAAA...AAAA</span></div></td>
-                            <td><div class="tx-table__cell"><span class="skeleton" style="width: 30%;">12345 ION</span></div></td>
+                            <td><div class="tx-table__cell"><span class="skeleton" style="width: 30%;">12345 ICE</span></div></td>
                         </tr>
                     </tbody>
 
@@ -42,7 +42,7 @@
                             </td>
                             <td>
                                 <div class="tx-table__cell">
-                                    {{$ton(miner.balance, 0)}} ION
+                                    {{$ton(miner.balance, 0)}} ICE
                                 </div>
                             </td>
                         </tr>
@@ -54,7 +54,7 @@
                             </td>
                             <td>
                                 <div class="tx-table__cell">
-                                    {{$ton(totalSuspended, 0)}} ION
+                                    {{$ton(totalSuspended, 0)}} ICE
                                 </div>
                             </td>
                         </tr>

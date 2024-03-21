@@ -53,7 +53,7 @@
                             'tx-amount--in': !is_out,
                             'tx-amount--out': is_out,
                         }">
-                            {{ $ton(amount) }} ION
+                            {{ $ton(amount) }} ICE
                         </div>
                     </div>
                     <div class="tx-table__cell tx-table__cell--align-right muted" style="padding-left: 0;">

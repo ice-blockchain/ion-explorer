@@ -25,7 +25,7 @@
                         <div class="card-row__name" v-text="$t('stats.total_staked')"/>
                         <div class="card-row__value">
                             <span v-if="!totalStakedTon" class="skeleton">123456789</span>
-                            <template v-else>{{totalStakedTon}} ION</template>
+                            <template v-else>{{totalStakedTon}} ICE</template>
                         </div>                                
                     </div>
 
@@ -100,7 +100,7 @@
                                     <ui-address v-bind:address="validator.wallet_address"/>
                                 </td>
                                 <td>
-                                    {{$ton(validator.stake)}} <span class="muted">ION</span>
+                                    {{$ton(validator.stake)}} <span class="muted">ICE</span>
                                 </td>
                             </tr>
                         </tbody>
@@ -149,12 +149,12 @@
                                 </td>
 
                                 <td>
-                                    {{$ton(validator.stake)}} <span class="muted">ION</span>
+                                    {{$ton(validator.stake)}} <span class="muted">ICE</span>
                                 </td>
 
                                 <td class="muted">
                                     <template v-if="validator.frozen_stake">
-                                        {{$ton(validator.frozen_stake)}} ION
+                                        {{$ton(validator.frozen_stake)}} ICE
                                     </template>
                                     <template v-else>
                                         None

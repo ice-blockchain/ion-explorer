@@ -22,7 +22,7 @@
         <div class="card-row">
             <div class="card-row__name" v-text="$t('nft_sale.price')"/>
             <div class="card-row__value">
-                {{$ton(sale.price)}} ION
+                {{$ton(sale.price)}} ICE
             </div>
         </div>
 
@@ -67,14 +67,14 @@
                 <div class="card-row">
                     <div class="card-row__name" v-text="$t('nft_sale.marketplace_fee')"/>
                     <div class="card-row__value">
-                        {{$ton(sale.marketplace_fee_amount)}} ION
+                        {{$ton(sale.marketplace_fee_amount)}} ICE
                     </div>
                 </div>
 
                 <div class="card-row">
                     <div class="card-row__name" v-text="$t('nft_sale.royalty')"/>
                     <div class="card-row__value">
-                        {{$ton(sale.royalty_amount)}} ION
+                        {{$ton(sale.royalty_amount)}} ICE
                     </div>
                 </div>
             </div>

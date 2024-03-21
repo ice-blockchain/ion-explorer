@@ -78,18 +78,18 @@ const router = new VueRouter({
             name: 'block',
             path: 'block/:workchain([\\-\\d]+)\::shard([\\-\\d]+)\::seqno([\\d]+)',
             component: PageBlock,
-            meta: { title: 'ION Explorer :: Block' },
+            meta: { title: 'ICE Explorer :: Block' },
             props: true,
         }, {
             name: 'block_latest',
             path: 'block/latest',
             component: PageBlockLatest,
-            meta: { title: 'ION Explorer :: Block' },
+            meta: { title: 'ICE Explorer :: Block' },
         }, {
             name: 'blocks',
             path: 'blocks',
             component: PageBlocks,
-            meta: { title: 'ION Explorer :: Blocks' },
+            meta: { title: 'ICE Explorer :: Blocks' },
         }, {
             name: 'nft',
             path: `nft/:address(${ADDRESS_REGEX.source})`,
@@ -100,7 +100,7 @@ const router = new VueRouter({
             path: `jetton/:address(${ADDRESS_REGEX.source})`,
             component: PageJetton,
             props: true,
-            meta: { title: 'ION Explorer :: Jetton' },
+            meta: { title: 'ICE Explorer :: Jetton' },
         }, {
             path: `nominator/:address(${ADDRESS_REGEX.source})`,
             redirect: { name: 'nominator' },
@@ -109,25 +109,25 @@ const router = new VueRouter({
             path: `pool/:address(${ADDRESS_REGEX.source})`,
             component: PagePool,
             props: true,
-            meta: { title: 'ION Explorer :: Nominator Pool' },
+            meta: { title: 'ICE Explorer :: Nominator Pool' },
         }, {
             name: 'vesting',
             path: `vesting/:address(${ADDRESS_REGEX.source})`,
             component: PageVesting,
             props: true,
-            meta: { title: 'ION Explorer :: Vesting' },
+            meta: { title: 'ICE Explorer :: Vesting' },
         }, {
             name: 'locker',
             path: `locker/:address(${ADDRESS_REGEX.source})`,
             component: PageLocker,
             props: true,
-            meta: { title: 'ION Explorer :: Locker' },
+            meta: { title: 'ICE Explorer :: Locker' },
         }, {
             name: 'single_nominator',
             path: `single-nominator/:address(${ADDRESS_REGEX.source})`,
             component: PageSingleNominator,
             props: true,
-            meta: { title: 'ION Explorer :: Single Nominator Pool' },
+            meta: { title: 'ICE Explorer :: Single Nominator Pool' },
         }, /*{
             name: 'suspended',
             path: 'suspended',
@@ -140,7 +140,7 @@ const router = new VueRouter({
             name: 'validators',
             path: 'validators',
             component: PageValidators,
-            meta: { title: 'ION Explorer :: Validators list' },
+            meta: { title: 'ICE Explorer :: Validators list' },
         }, {
             name: 'config',
             path: '/config',
@@ -149,7 +149,7 @@ const router = new VueRouter({
             name: 'apps',
             path: 'apps',
             component: PageApps,
-            meta: { title: 'ION Explorer :: Apps' },
+            meta: { title: 'ICE Explorer :: Apps' },
             props: true,
         }, {
             name: 'apps-category',

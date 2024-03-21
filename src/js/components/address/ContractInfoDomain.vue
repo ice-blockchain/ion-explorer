@@ -15,7 +15,7 @@
                     v-bind:href="`https://dns.ton.org/#${domain_name}`"
                     v-text="$t('address.contract_type.sale.on_auction')"/>
 
-                <template>{{$ton(currentPrice)}} ION</template>
+                <template>{{$ton(currentPrice)}} ICE</template>
             </i18n>
         </span>
     </div>

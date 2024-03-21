@@ -17,15 +17,15 @@
             </tr>
             <tr>
                 <td>Value</td>
-                <td>{{$ton(value, false)}} ION</td>
+                <td>{{$ton(value, false)}} ICE</td>
             </tr>
             <tr>
                 <td>Forward fee</td>
-                <td>{{$fee(fwd_fee)}} ION</td>
+                <td>{{$fee(fwd_fee)}} ICE</td>
             </tr>
             <tr>
                 <td>IHR fee</td>
-                <td>{{$fee(ihr_fee)}} ION</td>
+                <td>{{$fee(ihr_fee)}} ICE</td>
             </tr>
             <tr>
                 <td>Creation LT</td>

@@ -125,24 +125,24 @@
                     <div class="card-row">
                         <div class="card-row__name">total</div>
                         <div class="card-row__value">
-                            <span v-if="isLoading" class="skeleton">0.1 ION</span>
-                            <span v-else>{{$fee(fee)}} ION</span>
+                            <span v-if="isLoading" class="skeleton">0.1 ICE</span>
+                            <span v-else>{{$fee(fee)}} ICE</span>
                         </div>
                     </div>
 
                     <div class="card-row">
                         <div class="card-row__name">storage</div>
                         <div class="card-row__value">
-                            <span v-if="isLoading" class="skeleton">0.1 ION</span>
-                            <span v-else>{{$fee(storageFee)}} ION</span>
+                            <span v-if="isLoading" class="skeleton">0.1 ICE</span>
+                            <span v-else>{{$fee(storageFee)}} ICE</span>
                         </div>
                     </div>
 
                     <div class="card-row">
                         <div class="card-row__name">other</div>
                         <div class="card-row__value">
-                            <span v-if="isLoading" class="skeleton">0.1 ION</span>
-                            <span v-else>{{$fee(otherFee)}} ION</span>
+                            <span v-if="isLoading" class="skeleton">0.1 ICE</span>
+                            <span v-else>{{$fee(otherFee)}} ICE</span>
                         </div>
                     </div>
                 </div>

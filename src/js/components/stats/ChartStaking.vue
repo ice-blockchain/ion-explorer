@@ -183,7 +183,7 @@ export default {
                 type: 'bar',
                 yAxisID: 'volume',
                 label: this.$t('stats.staking'),
-                suffix: ' ION',
+                suffix: ' ICE',
                 parsing: false,
             });
 

@@ -48,7 +48,7 @@
                     <div class="card-row__name" v-text="$t('address.info.balance')" />
                     <div class="card-row__value" v-if="wallet.balance == '0' || wallet.balance">
                         {{ $ton(wallet.balance) }}
-                        <span v-text="addressMeta.tonIcon || 'ION'" title="ION" />
+                        <span v-text="addressMeta.tonIcon || 'ICE'" title="ICE" />
 
                         <template v-if="wallet.balance != '0'">
                             <span v-if="$store.state.exchangeRate" style="color: #717579">
@@ -59,7 +59,7 @@
                         <span class="muted">&bull;</span> <a v-bind:href="vestingLink" target="_blank">{{ $t('vesting.link') }}</a>
                     </div>
                     <div v-else class="card-row__value">
-                        <span class="skeleton">00000 ION ≈ 00000 USD</span>
+                        <span class="skeleton">00000 ICE ≈ 00000 USD</span>
                     </div>
                 </div>
                 <div class="card-row">
@@ -75,27 +75,27 @@
                         <div class="card-row">
                             <div class="card-row__name" v-text="$t('vesting.total')" />
                             <div class="card-row__value">
-                                <span v-if="vesting.vesting_total_amount === undefined" class="skeleton">10000 ION</span>
+                                <span v-if="vesting.vesting_total_amount === undefined" class="skeleton">10000 ICE</span>
                                 <template v-else>
-                                    {{ $ton(vesting.vesting_total_amount) }} ION
+                                    {{ $ton(vesting.vesting_total_amount) }} ICE
                                 </template>
                             </div>
                         </div>
                         <div class="card-row">
                             <div class="card-row__name" v-text="$t('vesting.available')" />
                             <div class="card-row__value">
-                                <span v-if="vestingAvailable === undefined" class="skeleton">10000 ION</span>
+                                <span v-if="vestingAvailable === undefined" class="skeleton">10000 ICE</span>
                                 <template v-else>
-                                    {{ $ton(vestingAvailable) }} ION
+                                    {{ $ton(vestingAvailable) }} ICE
                                 </template>
                             </div>
                         </div>
                         <div class="card-row">
                             <div class="card-row__name" v-text="$t('vesting.locked')" />
                             <div class="card-row__value">
-                                <span v-if="vesting.locked_amount === undefined" class="skeleton">10000 ION</span>
+                                <span v-if="vesting.locked_amount === undefined" class="skeleton">10000 ICE</span>
                                 <template v-else>
-                                    {{ $ton(vesting.locked_amount) }} ION
+                                    {{ $ton(vesting.locked_amount) }} ICE
                                 </template>
                             </div>
                         </div>
