@@ -108,6 +108,7 @@ export default {
         is_aggregated: Boolean,
         is_success: Boolean,
         is_bounced: Boolean,
+        is_incoming_transaction: Boolean,
         outputCount: Number,
         to: String,
         amount: String,
@@ -167,7 +168,7 @@ export default {
         },
 
         is_out() {
-            return this.from == this.address;
+            return !this.is_incoming_transaction;
         },
 
         txLinkRouteParams() {

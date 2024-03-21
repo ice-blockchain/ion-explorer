@@ -54,6 +54,7 @@
                                     v-bind:outputCount="tx.output_count"
                                     v-bind:action="msg.action"
                                     v-bind:meta="msg.meta"
+                                    v-bind:is_incoming_transaction="tx.incoming_transaction"
                                     v-bind="msg" />
                                 <tx-row-mobile v-else-if="displayMsg(msg) && isMobile"
                                     v-bind:class="{ 'sub-list': idx > 0 }"
@@ -67,6 +68,7 @@
                                     v-bind:outputCount="tx.output_count"
                                     v-bind:action="msg.action"
                                     v-bind:meta="msg.meta"
+                                    v-bind:is_incoming_transaction="tx.incoming_transaction"
                                     v-bind="msg" />
                             </keep-alive>
                         </template>

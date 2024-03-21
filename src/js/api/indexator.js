@@ -77,6 +77,7 @@ const prepareTransaction = function(tx, address) {
         lt: tx.lt,
         exit_code: exit_code || 0,
         messages: [],
+        incoming_transaction: tx.incoming_transaction
     };
 
     const msgDetails = {
@@ -162,6 +163,14 @@ export const getTransactionsByAddress = async function(address, { limit = 50, of
         }
 
         item.fee = item.total_fees;
+
+        // This is another way to detect incoming transactions
+        // We look into outgoing messages and see, whether they are coming to
+        // the given account (not from it).
+        item.incoming_transaction = true;
+        if (item.out_msgs.length > 0) {
+            item.incoming_transaction = item.out_msgs[0].destination === item.account;
+        }
 
         item.in_msg.source = item.in_msg.source_friendly;
         item.in_msg.destination = item.in_msg.destination_friendly;
