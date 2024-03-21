@@ -291,6 +291,9 @@ export default {
                 this.address = canonizeAddress(tx.account);
                 this.type = tx.transaction_type;
 
+                tx.in_msg.source = tx.in_msg.source_friendly;
+                tx.in_msg.destination = tx.in_msg.destination_friendly;
+
                 // in_msg hash matches the requested hash, meaning that we're searching
                 // for in_msg_hash on tx page, need to replace URL:
                 if (tx?.in_msg?.hash && toBase64Web(tx.in_msg.hash) === toBase64Web(this.hash)) {
