@@ -6,7 +6,7 @@
         <div class="header__container container">
 
             <ui-link v-bind:to="{ name: 'index' }" style="flex-grow: 0">
-                <img src="@img/banner-new.png" alt="ICE" style="flex-grow: 0; width: 46px; height: 46px;"/>
+                <img src="@img/banner-new.png" alt="ICE" style="flex-grow: 0; width: 36px; height: 36px;"/>
             </ui-link>
 
             <div class="header-ear-right">
