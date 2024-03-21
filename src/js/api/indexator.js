@@ -172,8 +172,10 @@ export const getTransactionsByAddress = async function(address, { limit = 50, of
             item.incoming_transaction = item.out_msgs[0].destination === item.account;
         }
 
-        item.in_msg.source = item.in_msg.source_friendly;
-        item.in_msg.destination = item.in_msg.destination_friendly;
+        if (item.in_msg) {
+            item.in_msg.source = item.in_msg.source_friendly;
+            item.in_msg.destination = item.in_msg.destination_friendly;
+        }
 
         for (const message of item.out_msgs) {
             message.source = message.source_friendly;
