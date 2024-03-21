@@ -49,7 +49,7 @@ export const getPreviousBlocks = async function ({ wc, limit, offset, startUtime
     //     return block.tx_count > 0;
     // });
 
-    return result.map(Object.freeze);
+    return result.sort((a, b) => b.seqno - a.seqno).map(Object.freeze);
 };
 
 const getSourceAndDestination = function (msg, address, hash) {
