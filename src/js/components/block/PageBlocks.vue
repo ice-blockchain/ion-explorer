@@ -110,7 +110,7 @@ export default {
 
     methods: {
         async loadPreviousBlocks() {
-            const takeCount = 32;
+            const takeCount = 40;
 
             this.blocks = await getPreviousBlocks({ limit: takeCount });
 
