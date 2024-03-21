@@ -60,7 +60,7 @@ export default {
 
     metaInfo() {
         return {
-            title: `ICE Explorer :: ${this.title || this.$t('apps.title')}`,
+            title: `ION Explorer :: ${this.title || this.$t('apps.title')}`,
         };
     },
 

@@ -229,7 +229,7 @@ export default {
     nft: {
         collection: {
             meta: {
-                title: 'NFT-коллекция {name} :: ICE Explorer',
+                title: 'NFT-коллекция {name} :: ION Explorer',
                 description: 'Просмотр {count} NFT-итемов из коллекции {name} в эксплорере ICE.',
             },
             item_count: 'Пусто | {n} штука | {n} штуки | {n} штук',

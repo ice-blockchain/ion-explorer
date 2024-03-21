@@ -173,7 +173,7 @@ export default {
 
     tx: {
         meta: {
-            title: 'ICE Explorer :: Transaction {hash}',
+            title: 'ION Explorer :: Transaction {hash}',
         },
         title: 'Transaction details',
         account: 'Account',
@@ -231,7 +231,7 @@ export default {
     nft: {
         collection: {
             meta: {
-                title: '{name} NFT collection :: ICE Explorer',
+                title: '{name} NFT collection :: ION Explorer',
                 description: 'View {count} NFT items of {name} collection in ICE blockchain explorer.',
             },
             item_count: 'No items | {n} item | {n} items',
@@ -244,8 +244,8 @@ export default {
         },
         item: {
             meta: {
-                title: '{name} NFT item (#{index}) :: ICE Explorer',
-                title_standalone: '{name} NFT item :: ICE Explorer',
+                title: '{name} NFT item (#{index}) :: ION Explorer',
+                title_standalone: '{name} NFT item :: ION Explorer',
             },
             collection: 'Collection',
             no_collection: 'None',
