@@ -162,6 +162,15 @@ export const getTransactionsByAddress = async function(address, { limit = 50, of
         }
 
         item.fee = item.total_fees;
+
+        item.in_msg.source = item.in_msg.source_friendly;
+        item.in_msg.destination = item.in_msg.destination_friendly;
+
+        for (const message of item.out_msgs) {
+            message.source = message.source_friendly;
+            message.destination = message.destination_friendly;
+        }
+
         return item;
     });
 
