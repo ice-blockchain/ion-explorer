@@ -243,8 +243,10 @@ export const getTransactionByHash = async function(tx_hash) {
             item.action_result_code =  item.description.action.result_code;
         }
 
-        item.in_msg.source = item.in_msg.source_friendly;
-        item.in_msg.destination = item.in_msg.destination_friendly;
+        if (item.in_msg) {
+            item.in_msg.source = item.in_msg.source_friendly;
+            item.in_msg.destination = item.in_msg.destination_friendly;
+        }
 
         for (const message of item.out_msgs) {
             message.source = message.source_friendly;
