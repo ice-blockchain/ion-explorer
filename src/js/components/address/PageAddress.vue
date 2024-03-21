@@ -16,11 +16,13 @@
                             {{address}}
                         </ui-copy-button>
 
+                        <!--
                         <span class="card-main-qr-button" v-on:click="qrModalVisible = true">
                             <svg v-pre class="card-main-qr-button__icon" width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
                                 <g fill="none" fill-rule="evenodd"><path d="M0 0h14v14H0z"/><path d="M8.6 8h.5a.6.6 0 0 1 .6.6v.5a.6.6 0 0 1-.6.6h-.5a.6.6 0 0 1-.6-.6v-.5a.6.6 0 0 1 .6-.6Zm0 3.8h.5a.6.6 0 0 1 .6.6v.5a.6.6 0 0 1-.6.6h-.5a.6.6 0 0 1-.6-.6v-.5a.6.6 0 0 1 .6-.6Zm3.8 0h.5a.6.6 0 0 1 .6.6v.5a.6.6 0 0 1-.6.6h-.5a.6.6 0 0 1-.6-.6v-.5a.6.6 0 0 1 .6-.6Zm-1.9-1.9h.5a.6.6 0 0 1 .6.6v.5a.6.6 0 0 1-.6.6h-.5a.6.6 0 0 1-.6-.6v-.5a.6.6 0 0 1 .6-.6ZM12.4 8h.5a.6.6 0 0 1 .6.6v.5a.6.6 0 0 1-.6.6h-.5a.6.6 0 0 1-.6-.6v-.5a.6.6 0 0 1 .6-.6Z" fill="currentColor"/><path d="M2.15.65h2.2a1.5 1.5 0 0 1 1.5 1.5v2.2a1.5 1.5 0 0 1-1.5 1.5h-2.2a1.5 1.5 0 0 1-1.5-1.5v-2.2a1.5 1.5 0 0 1 1.5-1.5Zm0 7.5h2.2a1.5 1.5 0 0 1 1.5 1.5v2.2a1.5 1.5 0 0 1-1.5 1.5h-2.2a1.5 1.5 0 0 1-1.5-1.5v-2.2a1.5 1.5 0 0 1 1.5-1.5Zm7.5-7.5h2.2a1.5 1.5 0 0 1 1.5 1.5v2.2a1.5 1.5 0 0 1-1.5 1.5h-2.2a1.5 1.5 0 0 1-1.5-1.5v-2.2a1.5 1.5 0 0 1 1.5-1.5Z" stroke="currentColor" stroke-width="1.3"/></g>
                             </svg>
                         </span>
+                        -->
                     </div>
                 </div>
 
