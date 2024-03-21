@@ -67,7 +67,7 @@ const globalPlugins = [
         template: './src/index.ejs',
         filename: __dirname + '/dist/index.html',
         inject: false,
-        favicon: `./src/favicon${process.env.TESTNET === '1' ? '-testnet' : ''}.svg`,
+        favicon: `./src/favicon${process.env.TESTNET === '1' ? '-testnet' : ''}.png`,
         minify: {
             collapseWhitespace: Encore.isProduction(),
             removeComments: Encore.isProduction(),
