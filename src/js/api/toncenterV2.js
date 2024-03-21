@@ -49,6 +49,12 @@ export const getPreviousBlocks = async function ({ wc, limit, offset, startUtime
     //     return block.tx_count > 0;
     // });
 
+    result = result.filter((block) => {
+        // Remove non-numeric shards like C0000....
+        // https://tonviewer.com/block/(0,c000000000000000,41732614)
+        return parseInt(block.shard) >= 0;
+    });
+
     return result.sort((a, b) => b.seqno - a.seqno).map(Object.freeze);
 };
 
