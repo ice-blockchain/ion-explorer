@@ -214,14 +214,20 @@ export const getTransaction = async function ({ address, lt, hash, to_lt }) {
  * @return {Promise<Object>}
  */
 export const getBlockHeader = async function ({ workchain, shard, seqno }) {
+
     const query = { workchain, shard, seqno };
 
-    const { data: { result } } = await http.get('getBlockHeader', { params: query });
+    try {
+        const { data: { result } } = await http.get('getBlockHeader', { params: query });
 
-    // Convert shard decimal id to hex:
-    result.prev_blocks.forEach(block => block.shard = dechex(block.shard));
+        // Convert shard decimal id to hex:
+        result.prev_blocks.forEach(block => block.shard = dechex(block.shard));
 
-    return Object.freeze(result);
+        return Object.freeze(result);
+    } catch (error) {
+        // There may be blocks without user transactions, which crash the parser
+        return [];
+    }
 };
 
 /**

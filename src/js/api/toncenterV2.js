@@ -41,12 +41,13 @@ export const getPreviousBlocks = async function ({ wc, limit, offset, startUtime
         block.root_hash = hexToBase64(block.root_hash);
     });
 
-    result = result.filter((block) => {
-        if (!block) {
-            return false;
-        }
-        return block.tx_count > 0;
-    });
+    // Some previous version to filter-out blocks without transactions
+    // result = result.filter((block) => {
+    //    if (!block) {
+    //         return false;
+    //     }
+    //     return block.tx_count > 0;
+    // });
 
     return result.map(Object.freeze);
 };
