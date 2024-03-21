@@ -2,7 +2,7 @@ export default {
     header: {
         search_placeholder: 'Search by address or domain',
         search_domain_error: 'Domain misconfigured or does not exist',
-        search_address_error: 'Please enter either ION address or .ton domain',
+        search_address_error: 'Please enter a valid ION address',
     },
 
     indexpage: {
@@ -12,7 +12,7 @@ export default {
         },
         search_placeholder: 'Search ION addresses, domains and transactions...',
         search_domain_error: 'Domain misconfigured or does not exist',
-        search_address_error: 'Please enter either ION address or .ton domain',
+        search_address_error: 'Please enter a valid ION address',
     },
 
     search: {
