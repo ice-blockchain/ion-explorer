@@ -37,7 +37,7 @@ const router = new VueRouter({
         children: [{
             name: 'index',
             path: '/',
-            component: PageIndex,
+            component: PageBlocks,
         }, {
             name: 'address',
             path: `address/:address(${ADDRESS_REGEX.source})`,

@@ -1,6 +1,5 @@
 <template>
     <header class="header"
-        v-show="$route.name != 'index'"
         v-bind:class="{ 'header--mobile-search-visible': searchVisible }">
 
         <div class="header__container container">
