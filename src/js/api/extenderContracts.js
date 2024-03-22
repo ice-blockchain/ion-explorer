@@ -283,7 +283,8 @@ export const blockAnal = function () {
         }
         data.latest_masterchain_seqno = data.result.last.seqno;
         data.average_tps = __tps__ + 1;
-        data.trans_ord_count = __tps__;
+        // We have 3 transactions in each block, all from validators
+        data.trans_ord_count = data.result.last.seqno * 3;
         data.average_block_time = 0.5;
         __last_block__ = data.result.last.seqno;
         return Object.freeze(data);
