@@ -193,4 +193,20 @@ router.afterEach((to, from) => {
     });
 });
 
+// Silencer for the redundant navigation error
+const originalPush = router.push
+router.push = function push(location, onResolve, onReject) {
+    if (onResolve || onReject) {
+        return originalPush.call(this, location, onResolve, onReject)
+    }
+
+    return originalPush.call(this, location).catch((err) => {
+        if (VueRouter.isNavigationFailure(err)) {
+            return err
+        }
+
+        return Promise.reject(err)
+    })
+}
+
 export default router;
