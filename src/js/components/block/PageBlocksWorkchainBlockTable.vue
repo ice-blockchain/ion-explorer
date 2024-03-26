@@ -122,6 +122,11 @@ export default {
                 limit: 2,
             });
 
+            // TODO: This is a fix for the logic, which is not consequent. So, this may also be not consequent in the end.
+            if (newBlocks.length < 2) {
+                return;
+            }
+
             if (newBlocks[1].seqno === this.blocks[0].seqno + 1) {
                 this.blocks.unshift(newBlocks[0], newBlocks[1]);
 
@@ -135,6 +140,13 @@ export default {
         },
 
         async loadMore() {
+
+            // Skip this call, when no way to calculate the end time
+            // TODO: This is a fix for the logic, which is not consequent. So, this may also be not consequent in the end.
+            if (!this.blocks.at(-1)) {
+                return;
+            }
+
             this.truncateBlockList = false;
             this.isLoading = true;
 
