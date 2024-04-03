@@ -158,8 +158,11 @@ export const getTransactionsByAddress = async function(address, { limit = 50, of
         item.utime = item.now;
         if (item.end_status === "uninit") {
             item.action_result_code = 0;
-        } else {
+        } else if (item.description.action) {
             item.action_result_code =  item.description.action.result_code;
+        } else {
+            // TODO: This is an undefined state for the state machine. No sure, when it happens.
+            item.action_result_code = 0;
         }
 
         item.fee = item.total_fees;
