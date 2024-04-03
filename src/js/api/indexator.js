@@ -149,8 +149,10 @@ export const getTransactionsByAddress = async function(address, { limit = 50, of
 
     // v.2.0
     const query = {
-        account: address
-    }
+        account: address,
+        limit,
+        offset
+    };
 
     let data = await http.get('transactions', { params: query }).then(({ data }) => data);
 
