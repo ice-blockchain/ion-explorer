@@ -48,6 +48,7 @@ import UiAnimatedNumber from '~/components/UiAnimatedNumber.vue';
 import PageBlocksMiniTable from './PageBlocksMiniTable.vue';
 import WorkchainBlocks from './PageBlocksWorkchainBlockTable.vue';
 import TransactionsTable from './PageBlocksTransactions.vue';
+import {getOverview} from "~/api/analytics";
 
 export default {
     timerHandle: undefined,
@@ -131,7 +132,9 @@ export default {
 
         async blockAnalytics() {
             this.blockAnal = await blockAnal();
-            this.totalTx = this.blockAnal.trans_ord_count;
+
+            const summary = await getOverview();
+            this.totalTx = summary.transactions_count;
         },
     },
 
