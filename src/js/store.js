@@ -1,7 +1,7 @@
 import Vuex from 'vuex';
 import Vue from 'vue';
 import { ADDRBOOK_LOCATION, APP_MAIN_LOCALE, APP_MAIN_EXCHANGE_CURRENCY, APP_MAIN_THEME } from '~/config.js';
-import { getExchangeRateAndTrend } from '~/api/coingecko.js';
+import axios from "axios";
 
 Vue.use(Vuex);
 
@@ -118,8 +118,12 @@ export default new Vuex.Store({
         getExchangeRates({ state, commit }) {
             commit('updateExchangeRate', {});
 
-            return getExchangeRateAndTrend(state.exchangeRateCurrency).then(([ rate, trend ]) => {
-                commit('updateExchangeRate', { rate, trend });
+            // TODO: Move this to settings
+            const statisticsClient = axios.create({
+                baseURL: "https://data.ice.io/",
+            });
+            return statisticsClient.get('stats').then(({ data }) => {
+                commit('updateExchangeRate', { rate: data.price, trend: 1 });
             });
         },
     },
