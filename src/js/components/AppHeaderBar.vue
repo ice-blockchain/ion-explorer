@@ -8,6 +8,16 @@
                 <img src="@img/banner-new.png" alt="ICE" style="flex-grow: 0; width: 36px; height: 36px;"/>
             </ui-link>
 
+            <div class="header__links">
+                <ui-link v-bind:to="{name: 'index'}" style="flex-grow: 0" class="header__link">
+                    BLOCKS
+                </ui-link>
+
+                <ui-link v-bind:to="{name: 'stats'}" style="flex-grow: 0" class="header__link">
+                    STATS
+                </ui-link>
+            </div>
+
             <div class="header-ear-right">
                 <ui-search show-loopa class="header-search"
                     v-bind:focusInputField="searchVisible"
@@ -123,6 +133,30 @@ export default {
     .header__container {
         padding: 0 8px;
     }
+}
+
+.header__links {
+    display: flex;
+    gap: 20px;
+    height: 100%;
+    margin-left: 15px;
+}
+
+.header__link {
+    height: 100%;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    color: var(--body-text-color);
+}
+
+.router-link-exact-active {
+    text-decoration: underline;
+    text-decoration-thickness: 4px; /* Makes the underline bolder */
+    text-decoration-style: solid; /* Ensures the underline is solid */
+    text-underline-offset: 17px; /* Offsets the underline 5 pixels below the text */
+    text-decoration-color: var(--blue-bright);
 }
 
 .header-search {

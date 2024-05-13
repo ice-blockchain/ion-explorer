@@ -132,11 +132,11 @@ const router = new VueRouter({
             name: 'suspended',
             path: 'suspended',
             component: PageSuspended,
-        }, {
+        },*/ {
             name: 'stats',
             path: 'stats',
             component: PageStats,
-        }, {
+        }, /*{
             name: 'validators',
             path: 'validators',
             component: PageValidators,

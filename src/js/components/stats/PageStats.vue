@@ -35,7 +35,7 @@
     }
 }
 
-.ton-icon {
+.ion-icon {
     fill: currentColor;
     width: 28px;
     height: 28px;
@@ -112,7 +112,7 @@
                 <div class="chart-box__value">
                     <component v-if="item.component" :is="item.component" v-bind:value="item.value" />
                     <span v-else>
-                        <icon-ton v-if="item.icon_ton" class="ton-icon" />{{ item.value }}
+                        <icon-ion v-if="item.icon_ion" class="ion-icon" />{{ item.value }}
                     </span>
                 </div>
                 <footer>
@@ -161,10 +161,10 @@ import ChartPrice from './ChartPrice.vue';
 import ChartStaking from './ChartStaking.vue';
 import ValidationStatus from './ValidationStatus.vue';
 import ValidationStatusMobile from './ValidationStatusMobile.vue';
-import IconTon from '@img/icons/tonscan/ton-24.svg?inline';
-import { MULTIPLIER } from '~/helpers';
+import IconIon from '@img/icons/tonscan/ion.svg?inline';
 
 import UiAnimatedNumber from '~/components/UiAnimatedNumber.vue';
+import axios from "axios";
 
 const formatter = new Intl.NumberFormat('en');
 
@@ -196,10 +196,23 @@ export default {
         });
 
         getBlockchainMarketAnal().then((data) => {
-            this.circulation = formatter.format(data.self_reported_circulating_supply);
-            this.circulation_percent = Math.round(data.self_reported_circulating_supply / data.total_supply * 100);
-            this.market_cap = Math.floor(data.quotes.usd.market_cap);
-            this.setTotalSupply(data.total_supply);
+
+            const self = this;
+
+            // TODO: Move this to settings
+            const statisticsClient = axios.create({
+                baseURL: "https://data.ice.io/",
+            });
+            statisticsClient.get('stats').then(({ data }) => {
+
+                const circulatingSupply = Math.round(data.circulatingSupply);
+                const totalSupply = data.totalSupply;
+
+                self.circulation = formatter.format(circulatingSupply);
+                self.circulation_percent = Math.round(circulatingSupply / totalSupply * 100);
+                self.market_cap = Math.floor(data.markerCap);
+                self.setTotalSupply(totalSupply);
+            });
         });
     },
 
@@ -219,12 +232,12 @@ export default {
                 header: this.$t('stats.circulation'),
                 description: this.$t('stats.percent_total_supply', { total: this.circulation_percent }),
                 value: this.circulation,
-                icon_ton: true
+                icon_ion: true
             }, {
                 header: this.$t('stats.total_supply'),
-                description: this.$t('stats.percent_inflation_rate'),
+                description: '',
                 value: this.total_supply,
-                icon_ton: true
+                icon_ion: true
             }];
         },
     },
@@ -256,7 +269,7 @@ export default {
         UiAnimatedNumber,
         ValidationStatus,
         ValidationStatusMobile,
-        IconTon
+        IconIon: IconIon
     },
 };
 </script>
