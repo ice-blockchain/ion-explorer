@@ -121,12 +121,13 @@
             </div>
         </div>
 
+        <div class="cotract-types-container">
+            <chart-contract-types />
+        </div>
+
         <!--
         <div class="price-container">
             <chart-price v-bind:market-cap="market_cap" />
-        </div>
-        <div class="cotract-types-container">
-            <chart-contract-types />
         </div>
 
         <div class="address-count-container">

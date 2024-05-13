@@ -228,14 +228,6 @@ export const getJettonBalances = function (address) {
 /**
  * @return {Promise<Object>}
  */
-export const getBlockchainAddressAnal = function () {
-    // return http.get('blockchain/active_address_stats').then(({ data }) => Object.freeze(data));
-    return [];
-};
-
-/**
- * @return {Promise<Object>}
- */
 export const getBlockchainMarketAnal = function () {
 
     // v.1.0

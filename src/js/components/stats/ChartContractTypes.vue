@@ -40,9 +40,9 @@
 </style>
 
 <script>
-import { getBlockchainAddressAnal } from '~/api/extenderContracts.js';
 import DonutChart from '~/lib/Chart.js/UiChartDonut.vue';
 import ChartColorSchemeMixin from '~/mixins/chartColorScheme.js'
+import {getOverview} from "~/api/analytics";
 
 export default {
     mixins: [ChartColorSchemeMixin],
@@ -68,7 +68,24 @@ export default {
     },
 
     async mounted() {
-        const data = await getBlockchainAddressAnal();
+
+        const data = {
+            graph: [],
+            total: 0
+        };
+
+        const summary = await getOverview();
+
+        data.graph.push({
+            type: "wallet",
+            pie: 1,
+            count: summary.accounts_count
+        });
+
+        // Sum of all address types
+        data.total = data.graph.reduce((previousValue, currentValue, currentIndex, array) => {
+            return previousValue + currentValue.count;
+        }, 0);
         
         const labels = [];
         const dataset = {
