@@ -127,28 +127,16 @@ export default {
   },
 
   methods: {
-    updateInterval({ length }) {
-      this.interval = length;
-    },
-
-    async loadMarketData() {
-      const { data } = await axios.get(
-        "https://api.coingecko.com/api/v3/coins/the-open-network?localization=false&community_data=false&developer_data=false&market_data=true"
-      );
-    },
 
     async loadData() {
       const { data } = await axios.get(
-        `https://api.coingecko.com/api/v3/coins/the-open-network/market_chart?vs_currency=USD&days=${this.interval}`
+        `https://api.coingecko.com/api/v3/coins/ice/market_chart?vs_currency=USD&days=${this.interval}`
       );
 
       const calculate = (dataset, key, localization) => {
         let latestValue = dataset[key][dataset[key].length - 1][1];
         const earliestValue = dataset[key][0][1];
         const valueDiff = (latestValue - earliestValue) / latestValue;
-
-        // Set capitalization value from props
-        if (localization === "stats.capitalization") latestValue = this.marketCap;
 
         return Object.freeze({
           localization: localization,
