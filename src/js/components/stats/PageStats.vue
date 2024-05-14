@@ -138,14 +138,18 @@
             <chart-transaction-count />
         </div>
 
-        <div class="staking-container">
-            <chart-staking v-bind:validators-amount="validators_amount" />
-        </div>
         <div class="validation-status-container">
             <keep-alive>
                 <component v-bind:is="isMobile ? 'validation-status-mobile' : 'validation-status'"
                     v-bind:cycle-start="validation_cycle_start" v-bind:cycle-end="validation_cycle_end"></component>
             </keep-alive>
+        </div>
+        -->
+
+        <!-- Will not be implemented as this has no respective use-cases. -->
+        <!--
+        <div class="staking-container">
+            <chart-staking v-bind:validators-amount="validators_amount" />
         </div>
         -->
 
