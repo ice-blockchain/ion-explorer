@@ -8,11 +8,11 @@
 </template>
 
 <script>
-import { getStatus } from '~/api/tontech.js';
 import LineChart from '~/lib/Chart.js/UiChartLine.vue';
 import { AMOUNT_OF_DATA_ON_MOBILE, AMOUNT_OF_DATA_ON_TABLET, decimateDataset } from '~/helpers.js'
 import ChartColorSchemeMixin from '~/mixins/chartColorScheme.js'
 import { decimateData } from '~/decimation.js'
+import { getQuarterly } from "~/api/analytics";
 
 export default {
     mixins: [ChartColorSchemeMixin],
@@ -61,12 +61,12 @@ export default {
 
     methods: {
         async getData() {
-            const data = await getStatus();
+            const data = await getQuarterly();
 
-            const labels = data.slice(-120).map(({ timestamp }) => timestamp * 1000);
+            const labels = data.slice(-120).map(({ day }) => Date.parse(day));
 
             const dataset = Object.freeze({
-                data: data.slice(-120).map(({ total_accounts }) => total_accounts),
+                data: data.slice(-120).map(({ address_count }) => address_count),
                 borderWidth: 1.5,
                 fill: true,
             });

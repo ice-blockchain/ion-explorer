@@ -12,13 +12,6 @@ const http = axios.create({
 /**
  * @return {Promise<Object>}
  */
-export const getStatus = function() {
-    return http.get(`/status`).then(({ data }) => data);
-};
-
-/**
- * @return {Promise<Object>}
- */
 export const getStakingInformation = function() {
     return http.get(`/yield`).then(({ data }) => data.map((item) => ({ ...item, date: item.date.replace('Z', '')})).slice(-340));
 };

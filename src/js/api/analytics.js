@@ -10,3 +10,9 @@ export const getOverview = async function (address) {
     const response = await http.get('overview');
     return response.data;
 };
+
+export const getQuarterly = async function (address) {
+
+    const response = await http.get('quarterly');
+    return response.data;
+};

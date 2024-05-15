@@ -129,7 +129,6 @@
             <chart-contract-types />
         </div>
 
-        <!--
         <div class="address-count-container">
             <chart-address-count v-on:supply="setTotalSupply" />
         </div>
@@ -138,6 +137,7 @@
             <chart-transaction-count />
         </div>
 
+        <!--
         <div class="validation-status-container">
             <keep-alive>
                 <component v-bind:is="isMobile ? 'validation-status-mobile' : 'validation-status'"
