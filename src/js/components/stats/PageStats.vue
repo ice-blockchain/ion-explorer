@@ -137,14 +137,12 @@
             <chart-transaction-count />
         </div>
 
-        <!--
         <div class="validation-status-container">
             <keep-alive>
                 <component v-bind:is="isMobile ? 'validation-status-mobile' : 'validation-status'"
                     v-bind:cycle-start="validation_cycle_start" v-bind:cycle-end="validation_cycle_end"></component>
             </keep-alive>
         </div>
-        -->
 
         <!-- Will not be implemented as this has no respective use-cases. -->
         <!--
@@ -194,10 +192,15 @@ export default {
     mounted() {
         this.loadBlockAnalytics();
 
-        getValidatorsStats({ limit: 1 }).then(([ data ]) => {
-            this.validators_amount = data.validator_count;
-            this.validation_cycle_start = data.validation_cycle_start;
-            this.validation_cycle_end = data.validation_cycle_end;
+        // TODO: Move this to settings
+        const statisticsClient = axios.create({
+            baseURL: "https://23.29.127.131:3019/",
+        });
+        statisticsClient.get('validation/summary').then(({ data }) => {
+            // TODO: Support this parameter in the API
+            this.validators_amount = 3;
+            this.validation_cycle_start = data.election_id;
+            this.validation_cycle_end = data.next_round;
         });
 
         getBlockchainMarketAnal().then((data) => {
