@@ -5,7 +5,7 @@
         <div class="header__container container">
 
             <ui-link v-bind:to="{ name: 'index' }" style="flex-grow: 0">
-                <img src="@img/banner-new.png" alt="ICE" style="flex-grow: 0; width: 36px; height: 36px;"/>
+                <img src="@img/banner-new.png" alt="ICE" style="flex-grow: 0; width: 36px; height: 36px; padding-left: 5px; padding-right: 5px;"/>
             </ui-link>
 
             <div class="header__links">
@@ -58,7 +58,7 @@ export default {
 .header {
     display: flex;
     background: var(--header-background);
-    box-shadow: 0 1px 10px var(--header-box-shadow-color);
+    box-shadow: 0 1px 15px var(--header-box-shadow-color);
     padding: 8px 0;
     margin-bottom: 18px;
     height: 55px; // 54 + border
@@ -140,6 +140,8 @@ export default {
     gap: 20px;
     height: 100%;
     margin-left: 15px;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .header__link {
@@ -148,7 +150,11 @@ export default {
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
-    color: var(--body-text-color);
+    color: var(--body-muted-text-color);
+}
+
+.router-link-active {
+    color: var(--body-muted-text-color);
 }
 
 .router-link-exact-active {
@@ -157,6 +163,7 @@ export default {
     text-decoration-style: solid; /* Ensures the underline is solid */
     text-underline-offset: 17px; /* Offsets the underline 5 pixels below the text */
     text-decoration-color: var(--blue-bright);
+    color: var(--body-text-color);
 }
 
 .header-search {
