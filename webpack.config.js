@@ -60,6 +60,7 @@ Encore.configureDevServerOptions((options) => Object.assign(options, {
     port: process.env.APP_DEV_SERVER_PORT || '3000',
     allowedHosts: 'all',
     compress: false,
+    webSocketServer: false, // Disable WebSocket server
 }));
 
 const globalPlugins = [
