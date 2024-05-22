@@ -155,8 +155,7 @@
 </template>
 
 <script>
-import { getBlockchainMarketAnal, blockAnal } from '~/api/extenderContracts.js';
-import { getValidatorsStats } from '~/api/elections.js';
+import {blockAnal, getBlockchainMarketAnal} from '~/api/extenderContracts.js';
 import ChartContractTypes from './ChartContractTypes.vue';
 import ChartTransactionCount from './ChartTransactionCount.vue';
 import ChartAddressCount from './ChartAddressCount.vue';
@@ -168,6 +167,7 @@ import IconIon from '@img/icons/tonscan/ion.svg?inline';
 
 import UiAnimatedNumber from '~/components/UiAnimatedNumber.vue';
 import axios from "axios";
+import {ION_ANALYTICS_ENDPOINT_2, ION_DATA_ENDPOINT} from "~/config";
 
 const formatter = new Intl.NumberFormat('en');
 
@@ -190,11 +190,11 @@ export default {
     },
 
     mounted() {
+
         this.loadBlockAnalytics();
 
-        // TODO: Move this to settings
         const statisticsClient = axios.create({
-            baseURL: "https://23.29.127.131:3019/",
+            baseURL: ION_ANALYTICS_ENDPOINT_2,
         });
         statisticsClient.get('validation/summary').then(({ data }) => {
             // TODO: Support this parameter in the API
@@ -207,9 +207,8 @@ export default {
 
             const self = this;
 
-            // TODO: Move this to settings
             const statisticsClient = axios.create({
-                baseURL: "https://data.ice.io/",
+                baseURL: ION_DATA_ENDPOINT,
             });
             statisticsClient.get('stats').then(({ data }) => {
 
