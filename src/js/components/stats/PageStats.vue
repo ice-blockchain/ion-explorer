@@ -155,7 +155,7 @@
 </template>
 
 <script>
-import {blockAnal, getBlockchainMarketAnal} from '~/api/extenderContracts.js';
+import {blockAnal} from '~/api/extenderContracts.js';
 import ChartContractTypes from './ChartContractTypes.vue';
 import ChartTransactionCount from './ChartTransactionCount.vue';
 import ChartAddressCount from './ChartAddressCount.vue';
@@ -189,38 +189,34 @@ export default {
         };
     },
 
-    mounted() {
+    async mounted() {
+
+        let data;
 
         this.loadBlockAnalytics();
 
-        const statisticsClient = axios.create({
+        let statisticsClient = axios.create({
             baseURL: ION_ANALYTICS_ENDPOINT_2,
         });
-        statisticsClient.get('validation/summary').then(({ data }) => {
-            // TODO: Support this parameter in the API
-            this.validators_amount = 3;
-            this.validation_cycle_start = data.election_id;
-            this.validation_cycle_end = data.next_round;
+
+        data = await statisticsClient.get('validation/summary');
+        data = data.data;
+        // TODO: Support this parameter in the API
+        this.validators_amount = 3;
+        this.validation_cycle_start = data.election_id;
+        this.validation_cycle_end = data.next_round;
+
+        statisticsClient = axios.create({
+            baseURL: ION_DATA_ENDPOINT,
         });
-
-        getBlockchainMarketAnal().then((data) => {
-
-            const self = this;
-
-            const statisticsClient = axios.create({
-                baseURL: ION_DATA_ENDPOINT,
-            });
-            statisticsClient.get('stats').then(({ data }) => {
-
-                const circulatingSupply = Math.round(data.circulatingSupply);
-                const totalSupply = data.totalSupply;
-
-                self.circulation = formatter.format(circulatingSupply);
-                self.circulation_percent = Math.round(circulatingSupply / totalSupply * 100);
-                self.market_cap = Math.floor(data.markerCap);
-                self.setTotalSupply(totalSupply);
-            });
-        });
+        data = await statisticsClient.get('stats');
+        data = data.data;
+        const circulatingSupply = Math.round(data.circulatingSupply);
+        const totalSupply = data.totalSupply;
+        this.circulation = formatter.format(circulatingSupply);
+        this.circulation_percent = Math.round(circulatingSupply / totalSupply * 100);
+        this.market_cap = Math.floor(data.markerCap);
+        this.setTotalSupply(totalSupply);
     },
 
     computed: {
@@ -242,7 +238,7 @@ export default {
                 icon_ion: true
             }, {
                 header: this.$t('stats.total_supply'),
-                description: '',
+                description: this.$t('stats.percent_inflation_rate'),
                 value: this.total_supply,
                 icon_ion: true
             }];

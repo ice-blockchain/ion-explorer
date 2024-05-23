@@ -225,33 +225,6 @@ export const getJettonBalances = function (address) {
     return http.get(`address/${address}/jetton_wallets`).then(({ data }) => data.map(Object.freeze));
 };
 
-/**
- * @return {Promise<Object>}
- */
-export const getBlockchainMarketAnal = function () {
-
-    // v.1.0
-    // return http.get('blockchain/market_stats').then(({ data }) => Object.freeze(data));
-
-    // v.2.0
-    // TODO: Move this to settings
-    const statisticsClient = axios.create({
-        baseURL: "https://data.ice.io/",
-    });
-    return statisticsClient.get('stats').then(({ data }) => {
-
-        data.self_reported_circulating_supply = Math.floor(data.circulatingSupply);
-        data.total_supply = Math.floor(data.totalSupply);
-        data.quotes = {
-            usd: {
-                market_cap: data.marketCap
-            }
-        };
-
-        return Object.freeze(data);
-    });
-};
-
 let __last_block__ = undefined;
 let __tps__ = undefined;
 
