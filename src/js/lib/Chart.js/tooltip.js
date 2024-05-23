@@ -33,7 +33,9 @@ export const createTooltipObject = function (context, tooltipEl) {
             const color = dataPoint.dataset.borderColor || dataPoint.dataset.backgroundColor;
 
             // This is, probably, not the best solution to format the number, but still ..
-            dataPoint.formattedValue = "" + prefixNumber(dataPoint.dataset.data[dataPoint.dataIndex].y);
+            if (dataPoint.dataset.data[dataPoint.dataIndex].y) {
+                dataPoint.formattedValue = "" + prefixNumber(dataPoint.dataset.data[dataPoint.dataIndex].y);
+            }
 
             const tooltipColor = Array.isArray(color)
                 ? color[dataPoint.dataIndex]
