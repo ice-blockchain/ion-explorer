@@ -16,7 +16,7 @@ export const prefixNumber = function reduceNumberLengthWithSiPrefix(number) {
         return '0';
 
     } else if (number < 10) {
-        return number.toFixed(3);
+        return number.toFixed(4);
     }
 
     return number;

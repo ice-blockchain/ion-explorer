@@ -1,3 +1,5 @@
+import {prefixNumber} from "~/lib/Chart.js/helpers";
+
 export const createInitialTooltipData = (chart) => ({
     visible: false,
     header: chart.config.data.labels[0],
@@ -29,6 +31,9 @@ export const createTooltipObject = function (context, tooltipEl) {
         values: tooltipModel.dataPoints.map((dataPoint, idx) => {
             // border color for line chart, background color for bar chart:
             const color = dataPoint.dataset.borderColor || dataPoint.dataset.backgroundColor;
+
+            // This is, probably, not the best solution to format the number, but still ..
+            dataPoint.formattedValue = "" + prefixNumber(dataPoint.dataset.data[dataPoint.dataIndex].y);
 
             const tooltipColor = Array.isArray(color)
                 ? color[dataPoint.dataIndex]
