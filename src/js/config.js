@@ -47,8 +47,8 @@ export const TONSCAN_APPS_IMAGE_CDN_ROOT = trimSlashes(process.env.TONSCAN_APPS_
 
 export const BLOCKCHAIN_CONFIG_ENDPOINT = process.env.BLOCKCHAIN_CONFIG_ENDPOINT || 'https://jetton-index.tonscan.org/config';
 
-export const ION_ANALYTICS_ENDPOINT = process.env.ION_ANALYTICS_ENDPOINT;
+export const ION_ANALYTICS_ENDPOINT = process.env.ION_ANALYTICS_ENDPOINT || 'https://analytics-api.testnet.ice.io/';
 
-export const ION_ANALYTICS_ENDPOINT_2 = process.env.ION_ANALYTICS_ENDPOINT_2 || 'https://23.227.178.36:3019/';
+export const ION_ANALYTICS_ENDPOINT_2 = process.env.ION_ANALYTICS_ENDPOINT_2 || 'https://analytics-api.testnet.ice.io/';
 
 export const ION_DATA_ENDPOINT = process.env.ION_DATA_ENDPOINT || 'https://data.ice.io/';
