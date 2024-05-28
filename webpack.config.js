@@ -34,6 +34,9 @@ Encore.enableSassLoader()
     .addStyleEntry('style', './src/sass/app.scss')
     .copyFiles({ from: './src', to: '[name].[ext]', pattern: /addrbook\.json$/ })
     .copyFiles({ from: './src', to: '[name].[ext]', pattern: /favicon\.ico$/ })
+    .copyFiles({ from: './src', to: '[name].[ext]', pattern: /.*\.png$/ })
+    .copyFiles({ from: './src', to: '[name].[ext]', pattern: /site.webmanifest$/ })
+    .copyFiles({ from: './src', to: '[name].[ext]', pattern: /browserconfig.xml$/ })
     .configureImageRule({}, function(config) { config.test = /\.(png|jpg|jpeg|webp)$/ })
     .configureFontRule({ filename: 'font-[name].[hash:8][ext]' })
     .enableSingleRuntimeChunk()
@@ -68,7 +71,7 @@ const globalPlugins = [
         template: './src/index.ejs',
         filename: __dirname + '/dist/index.html',
         inject: false,
-        favicon: `./src/favicon${process.env.TESTNET === '1' ? '-testnet' : ''}.png`,
+        favicon: `./src/favicon.png`,
         minify: {
             collapseWhitespace: Encore.isProduction(),
             removeComments: Encore.isProduction(),
