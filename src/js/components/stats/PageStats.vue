@@ -40,7 +40,6 @@
     width: 28px;
     height: 28px;
     margin-right: 2px;
-    opacity: .3;
     transform: translate(-3px, 3px);
 }
 
