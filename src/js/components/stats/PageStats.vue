@@ -129,7 +129,7 @@
         </div>
 
         <div class="address-count-container">
-            <chart-address-count v-on:supply="setTotalSupply" />
+            <chart-address-count v-on:supply="doNothing" />
         </div>
 
         <div class="transaction-count-container">
@@ -212,6 +212,8 @@ export default {
         data = data.data;
         const circulatingSupply = Math.round(data.circulatingSupply);
         const totalSupply = data.totalSupply;
+        // TODO: Remove this hard-coded value
+        // const totalSupply = 21150537435;
         this.circulation = formatter.format(circulatingSupply);
         this.circulation_percent = Math.round(circulatingSupply / totalSupply * 100);
         this.market_cap = Math.floor(data.markerCap);
@@ -259,7 +261,8 @@ export default {
         setTotalSupply(supply) {
             supply = Math.round(supply);
             this.total_supply = formatter.format(supply);
-        }
+        },
+        doNothing(supply) {}
     },
 
     components: {
