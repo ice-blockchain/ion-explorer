@@ -5,7 +5,7 @@
         <div class="header__container container">
 
             <ui-link v-bind:to="{ name: 'index' }" style="flex-grow: 0">
-                <img src="@img/banner-new.png" alt="ICE" style="flex-grow: 0; width: 36px; height: 36px; padding-left: 5px; padding-right: 5px;"/>
+                <icon-ion class="ion-icon" style="flex-grow: 0; width: 36px; height: 36px; padding-left: 5px; padding-right: 5px;" />
             </ui-link>
 
             <div class="header__links">
@@ -40,6 +40,7 @@
 import IconLoopa from  '@img/icons/material-duotone/search.svg?inline';
 import IconSettings from  '@img/icons/material-duotone/more_vert.svg?inline';
 import UiSearch from '~/components/UiSearch.vue';
+import IconIon from '@img/icons/tonscan/ion.svg?inline';
 
 export default {
     data() {
@@ -49,7 +50,7 @@ export default {
     },
 
     components: {
-        IconLoopa, IconSettings, UiSearch,
+        IconLoopa, IconSettings, UiSearch, IconIon: IconIon
     },
 };
 </script>

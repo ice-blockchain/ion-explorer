@@ -25,7 +25,6 @@
 
 <script>
 import IconBannerPlus from '@img/icons/tonscan/apps/banner-plus.svg?vue';
-import bannerUrl from '@img/banner-new.png';
 
 export default {
     name: 'AppsBanner',
@@ -33,7 +32,7 @@ export default {
     data() {
         return {
             bannerLoaded: false,
-            bannerURL: bannerUrl,
+            bannerURL: undefined,
         };
     },
 
