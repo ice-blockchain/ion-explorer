@@ -43,7 +43,6 @@
 <script>
 import { blockAnal } from '~/api/extenderContracts.js';
 import { getPreviousBlocks } from '~/api';
-import { hexToBase64 } from '~/utils.js';
 import UiAnimatedNumber from '~/components/UiAnimatedNumber.vue';
 import PageBlocksMiniTable from './PageBlocksMiniTable.vue';
 import WorkchainBlocks from './PageBlocksWorkchainBlockTable.vue';
@@ -118,7 +117,12 @@ export default {
             this.mcHeight = this.blocks[0].seqno;
             this.lastBlockTime = this.masterchainBlocks[0].gen_utime - this.masterchainBlocks[1].gen_utime;
 
-            this.averageTps = this.blocks.reduce((acc, val) => acc + val.tx_count, 0) / takeCount;
+            // v.1.0
+            // this.averageTps = this.blocks.reduce((acc, val) => acc + val.tx_count, 0) / takeCount;
+
+            // v.2.0
+            const stats = await blockAnal();
+            this.averageTps =  stats.average_tps;
 
             if (!isNaN(this.totalTx)) {
                 if (this.masterchainBlocks.length) {

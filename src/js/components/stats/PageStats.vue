@@ -99,7 +99,7 @@
 
         <div v-for="(item, index) of informationBlocks" :data-index="index" style="margin-top: 0;"
             class="card information-block">
-            <div class="chart-box" v-if="item.value == 0">
+            <div class="chart-box" v-if="item.value === 0">
                 <header><span class="skeleton">User transaction count</span></header>
                 <div class="chart-box__value">
                     <span class="skeleton">3,414,166,606</span>
@@ -167,6 +167,7 @@ import IconIon from '@img/icons/tonscan/ion.svg?inline';
 import UiAnimatedNumber from '~/components/UiAnimatedNumber.vue';
 import axios from "axios";
 import {ION_ANALYTICS_ENDPOINT_2, ION_DATA_ENDPOINT} from "~/config";
+import {getOverview} from "~/api/analytics";
 
 const formatter = new Intl.NumberFormat('en');
 
@@ -192,7 +193,7 @@ export default {
 
         let data;
 
-        this.loadBlockAnalytics();
+        this.loadBlockAnalytics().then(() => {});
 
         let statisticsClient = axios.create({
             baseURL: ION_ANALYTICS_ENDPOINT_2,
@@ -247,16 +248,17 @@ export default {
     },
 
     methods: {
-        loadBlockAnalytics() {
-            blockAnal().then((stats) => {
-                this.currentHeight = stats.latest_masterchain_seqno;
-                this.blockTime = formatter.format(stats.average_block_time);
-                this.tps = formatter.format(stats.average_tps);
-                this.txCount = stats.trans_ord_count;
+        async loadBlockAnalytics() {
 
-            }).finally(() => {
-                setTimeout(() => this.loadBlockAnalytics(), this.blockTime * 1000);
-            });
+            const stats = await blockAnal();
+            this.currentHeight = stats.latest_masterchain_seqno;
+            this.blockTime = formatter.format(stats.average_block_time);
+            this.tps = formatter.format(stats.average_tps);
+
+            const overview = await getOverview();
+            this.txCount = overview.transactions_count;
+
+            setTimeout(() => this.loadBlockAnalytics(), this.blockTime * 1000);
         },
         setTotalSupply(supply) {
             supply = Math.round(supply);
