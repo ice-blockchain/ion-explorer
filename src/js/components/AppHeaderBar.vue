@@ -10,11 +10,11 @@
 
             <div class="header__links">
                 <ui-link v-bind:to="{name: 'index'}" style="flex-grow: 0" class="header__link">
-                    BLOCKS
+                    STATS
                 </ui-link>
 
-                <ui-link v-bind:to="{name: 'stats'}" style="flex-grow: 0" class="header__link">
-                    STATS
+                <ui-link v-bind:to="{name: 'blocks'}" style="flex-grow: 0" class="header__link">
+                    BLOCKS
                 </ui-link>
             </div>
 
