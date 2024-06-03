@@ -5,7 +5,7 @@
         <div class="header__container container">
 
             <ui-link v-bind:to="{ name: 'index' }" style="flex-grow: 0">
-                <icon-ion class="ion-icon" style="flex-grow: 0; width: 36px; height: 36px; padding-left: 5px; padding-right: 5px;" />
+                <icon-ion class="ion-icon" style="flex-grow: 0; width: 36px; height: 36px; padding-left: 5px; padding-right: 5px; color: var(--body-text-color);" />
             </ui-link>
 
             <div class="header__links">
