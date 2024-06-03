@@ -130,7 +130,7 @@ export default {
 
     async loadData() {
       const { data } = await axios.get(
-        `https://api.coingecko.com/api/v3/coins/ice/market_chart?vs_currency=USD&days=${this.interval}`
+        `https://analytics-api.testnet.ice.io/market?interval=${this.interval}`
       );
 
       const calculate = (dataset, key, localization) => {
