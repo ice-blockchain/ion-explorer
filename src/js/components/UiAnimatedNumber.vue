@@ -59,7 +59,14 @@ export default {
 
                 const progress = Math.min((currentTime  - startTime) / duration, 1);
 
-                this.intermediateValue = Math.floor(progress * (to - from) + from);
+                const computed = progress * (to - from) + from;
+                if (0 <= computed && computed < 1) {
+                    // In the older implementation, this condition was absent,
+                    // causing values less than 1 to be always shown as zero after the first animation.
+                    this.intermediateValue = computed;
+                } else {
+                    this.intermediateValue = Math.floor(computed);
+                }
 
                 if (progress < 1) {
                     window.requestAnimationFrame(step);

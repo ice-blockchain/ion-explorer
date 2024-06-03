@@ -117,12 +117,9 @@ export default {
             this.mcHeight = this.blocks[0].seqno;
             this.lastBlockTime = this.masterchainBlocks[0].gen_utime - this.masterchainBlocks[1].gen_utime;
 
-            // v.1.0
-            // this.averageTps = this.blocks.reduce((acc, val) => acc + val.tx_count, 0) / takeCount;
-
-            // v.2.0
-            const stats = await blockAnal();
-            this.averageTps =  stats.average_tps;
+            const summary = await getOverview();
+            this.totalTx = summary.transactions_count;
+            this.averageTps = summary.transactions_per_second;
 
             if (!isNaN(this.totalTx)) {
                 if (this.masterchainBlocks.length) {
@@ -136,9 +133,6 @@ export default {
 
         async blockAnalytics() {
             this.blockAnal = await blockAnal();
-
-            const summary = await getOverview();
-            this.totalTx = summary.transactions_count;
         },
     },
 

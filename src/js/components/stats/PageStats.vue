@@ -253,12 +253,19 @@ export default {
             const stats = await blockAnal();
             this.currentHeight = stats.latest_masterchain_seqno;
             this.blockTime = formatter.format(stats.average_block_time);
-            this.tps = formatter.format(stats.average_tps);
 
             const overview = await getOverview();
             this.txCount = overview.transactions_count;
+            this.tps = overview.transactions_per_second;
 
-            setTimeout(() => this.loadBlockAnalytics(), this.blockTime * 1000);
+            if (!this.loadBlockAnalyticsInterval) {
+                this.loadBlockAnalyticsInterval = setInterval(() => this.loadBlockAnalytics(), 3000);
+            }
+
+            // Gracefully remove the timer, which loads data
+            if (this._isDestroyed) {
+                clearInterval(this.loadBlockAnalyticsInterval);
+            }
         },
         setTotalSupply(supply) {
             supply = Math.round(supply);

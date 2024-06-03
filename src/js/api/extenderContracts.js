@@ -249,7 +249,7 @@ export const blockAnal = function () {
         data.latest_masterchain_seqno = data.result.last.seqno;
         data.average_tps = __tps__ + 1;
         data.trans_ord_count = __tps__;
-        data.average_block_time = 0.5;
+        data.average_block_time = 4;
         __last_block__ = data.result.last.seqno;
         return Object.freeze(data);
     });
