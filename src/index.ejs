@@ -29,6 +29,10 @@
         <meta name="google" content="notranslate">
 
         <link crossorigin rel="preload" href="<%= require('@fonts/rubik/rubik-latin-400.woff2') %>" as="font" type="font/woff2">
+        <link crossorigin rel="preload" href="<%= require('@fonts/rubik/rubik-400.woff') %>" as="font" type="font/woff2">
+        <link crossorigin rel="preload" href="<%= require('@fonts/rubik/rubik-latin-500.woff2') %>" as="font" type="font/woff2">
+        <link crossorigin rel="preload" href="<%= require('@fonts/rubik/rubik-cyrillic-400.woff2') %>" as="font" type="font/woff2">
+        <link crossorigin rel="preload" href="<%= require('@fonts/rubik/rubik-500.woff') %>" as="font" type="font/woff2">
 
         <% for (var js in htmlWebpackPlugin.files.js) { %>
             <link rel="preload" href="<%= htmlWebpackPlugin.files.js[js] %>" as="script">
