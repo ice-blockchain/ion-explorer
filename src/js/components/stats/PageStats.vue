@@ -100,7 +100,7 @@
         <div v-for="(item, index) of informationBlocks" :data-index="index" style="margin-top: 0;"
             class="card information-block">
             <div class="chart-box" v-if="item.value === 0">
-                <header><span class="skeleton">User transaction count</span></header>
+                <header><span class="skeleton">Total transaction count</span></header>
                 <div class="chart-box__value">
                     <span class="skeleton">3,414,166,606</span>
                 </div>

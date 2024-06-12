@@ -453,7 +453,7 @@ export default {
     stats: {
         masterchain_height: 'Masterchain height',
         block_time: 'Block time: {time}s',
-        transactions_count: 'User transaction count',
+        transactions_count: 'Total transaction count',
         transactions_per_second: '{n} transaction per second | {n} transactions per second',
         circulation: 'Circulation',
         total_supply: 'Total supply',
