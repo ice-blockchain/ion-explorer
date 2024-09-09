@@ -257,6 +257,10 @@ export default {
             hashHex: undefined,
             lt: undefined,
             out_msgs: [],
+            workchain: 0,
+            shard: 0,
+            seqno: 0,
+            blockUri: '#',
         };
     },
 
