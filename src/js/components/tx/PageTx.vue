@@ -120,6 +120,24 @@
             </div>
 
             <div class="card-row">
+              <div class="card-row__name" v-text="'Block'"/>
+              <div class="card-row__value card-row__value--flex-row">
+                <div class="card-row">
+                  <div class="card-row__name">workchain</div>
+                  <div class="card-row__value">{{this.workchain}}</div>
+                </div>
+                <div class="card-row">
+                  <div class="card-row__name">shard</div>
+                  <div class="card-row__value">{{this.shard}}</div>
+                </div>
+                <div class="card-row">
+                  <div class="card-row__name">seqno</div>
+                  <a v-bind:href="this.blockUri"><div class="card-row__value">{{this.seqno}}</div></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-row">
                 <div class="card-row__name" v-text="$t('tx.fee')"/>
                 <div class="card-row__value card-row__value--flex-row">
                     <div class="card-row">
@@ -332,6 +350,21 @@ export default {
                 this.hashBase64 = tx.hash;
                 this.hashHex = base64ToHex(this.hashBase64);
                 this.lt = tx.lt;
+
+                // A reference to the block, containing this transaction
+                const block = tx.block_ref;
+                if (block) {
+
+                  const {workchain, shard, seqno} = block;
+                  this.workchain = workchain;
+                  this.shard = shard;
+                  this.seqno = seqno;
+
+                  const ORIGIN = document.location.origin;
+                  if (block?.workchain && block?.shard && block?.seqno) {
+                    this.blockUri = `${ORIGIN}/block/${block.workchain}:${block.shard}:${block.seqno}`;
+                  }
+                }
             })
             .catch((e) => {
                 this.isError = true;
