@@ -361,7 +361,7 @@ export default {
                   this.seqno = seqno;
 
                   const ORIGIN = document.location.origin;
-                  if (block?.workchain && block?.shard && block?.seqno) {
+                  if (block.workchain !== undefined && block.shard !== undefined && block.seqno !== undefined) {
                     this.blockUri = `${ORIGIN}/block/${block.workchain}:${block.shard}:${block.seqno}`;
                   }
                 }
