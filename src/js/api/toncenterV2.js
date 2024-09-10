@@ -93,22 +93,7 @@ const getSourceAndDestination = function (msg, address, hash) {
     };
 };
 
-/**
- * @param  {Number} options.wc
- * @param  {Number} options.startUtime
- * @param  {Number} options.endUtime
- * @return {Promise<Array>}
- */
-export const getAllTransactions = async function ({ wc, limit, startUtime, endUtime } = {}) {
-    const { data: result } = await http.get('transactions', {
-        params: {
-            workchain: wc,
-            limit: limit,
-            start_utime: startUtime,
-            end_utime: endUtime,
-            sort: 'desc',
-        },
-    });
+const mapTransactions = async function(result) {
 
     const transactions = result.map((tx) => {
         const address = tx.account;
@@ -137,9 +122,51 @@ export const getAllTransactions = async function ({ wc, limit, startUtime, endUt
         sourceAndDestination.is_service = is_service;
         sourceAndDestination.is_external = is_external;
         sourceAndDestination.created_at = tx.now;
+        sourceAndDestination.lt = tx.lt;
+        sourceAndDestination.account = tx.account_friendly;
 
         return sourceAndDestination;
     });
 
     return transactions.sort((a, b) => b.created_at - a.created_at).map(Object.freeze);
+};
+
+/**
+ * Loads the list of transactions for a given block.
+ *
+ * @param workchain
+ * @param shard
+ * @param seqno
+ * @returns {Promise<*>}
+ */
+export const loadBlockTransactions = async function({workchain, shard, seqno}) {
+    const { data: result } = await http.get('transactions', {
+        params: {
+            workchain,
+            shard,
+            seqno
+        },
+    });
+
+    return await mapTransactions(result);
+};
+
+/**
+ * @param  {Number} options.wc
+ * @param  {Number} options.startUtime
+ * @param  {Number} options.endUtime
+ * @return {Promise<Array>}
+ */
+export const getAllTransactions = async function ({ wc, limit, startUtime, endUtime } = {}) {
+    const { data: result } = await http.get('transactions', {
+        params: {
+            workchain: wc,
+            limit: limit,
+            start_utime: startUtime,
+            end_utime: endUtime,
+            sort: 'desc',
+        },
+    });
+
+    return await mapTransactions(result);
 };

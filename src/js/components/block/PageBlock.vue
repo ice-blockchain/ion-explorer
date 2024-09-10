@@ -2,6 +2,28 @@
     <section>
         <section>
             <div class="card">
+
+                <div class="card-title">
+                  <span v-if="!isMasterChain" v-text="$t('block.masterchain_block_title')"/>
+                </div>
+
+                <div class="card-row card-row--wide" v-if="!isMasterChain">
+                  <div class="card-row__name" v-text="$t('tx.workchain')"/>
+                  <div class="card-row__value" v-text="block.masterchain_block_ref?.workchain"/>
+                </div>
+
+                <div class="card-row card-row--wide" v-if="!isMasterChain">
+                  <div class="card-row__name" v-text="$t('tx.shard')"/>
+                  <div class="card-row__value" v-text="block.masterchain_block_ref?.shard"/>
+                </div>
+
+                <div class="card-row card-row--wide" v-if="!isMasterChain">
+                  <div class="card-row__name" v-text="$t('tx.seqno')"/>
+                  <a v-bind:href="this.masterChainBlockUri">
+                    <div class="card-row__value" v-text="block.masterchain_block_ref?.seqno"/>
+                  </a>
+                </div>
+
                 <div class="card-title">
                     <span v-if="isMasterChain" v-text="$t('block.masterchain_block_title')"/>
                     <span v-else v-text="$t('block.shardchain_block_title')"/>
@@ -44,27 +66,6 @@
                         <span v-if="block.file_hash" v-text="block.file_hash"/>
                         <span v-else class="skeleton">zMLQwaoiatVZRJ0PY019KkbRoJYQjNS6azjpVNbMsOQ=</span>
                     </div>
-                </div>
-
-                <div class="card-title">
-                  <span v-if="!isMasterChain" v-text="$t('block.masterchain_block_title')"/>
-                </div>
-
-                <div class="card-row card-row--wide" v-if="!isMasterChain">
-                  <div class="card-row__name" v-text="$t('tx.workchain')"/>
-                  <div class="card-row__value" v-text="block.masterchain_block_ref?.workchain"/>
-                </div>
-
-                <div class="card-row card-row--wide" v-if="!isMasterChain">
-                  <div class="card-row__name" v-text="$t('tx.shard')"/>
-                  <div class="card-row__value" v-text="block.masterchain_block_ref?.shard"/>
-                </div>
-
-                <div class="card-row card-row--wide" v-if="!isMasterChain">
-                  <div class="card-row__name" v-text="$t('tx.seqno')"/>
-                  <a v-bind:href="this.masterChainBlockUri">
-                    <div class="card-row__value" v-text="block.masterchain_block_ref?.seqno"/>
-                  </a>
                 </div>
 
                 <div v-show="boringFieldsVisible">
@@ -208,16 +209,16 @@
 
 <script>
 import { getShards, getLastBlock } from '~/api';
-import {loadBlockDetails} from "~/api/toncenterV2";
+import {loadBlockDetails, loadBlockTransactions} from "~/api/toncenterV2";
 import ShardSkeleton from './BlockShardSkeleton.vue';
 import TxSkeleton from './BlockTxSkeleton.vue';
 import TxRow from './BlockTxRow.vue';
 
 export default {
     props: {
-        workchain: String,
-        shard: String,
-        seqno: String,
+        workchain: String | Number,
+        shard: String | Number,
+        seqno: String | Number,
     },
 
     data() {
@@ -231,7 +232,7 @@ export default {
 
     computed: {
         isMasterChain() {
-            return this.workchain === '-1';
+            return this.workchain === '-1' || this.workchain === -1;
         },
 
         hasPrevBlocks() {
@@ -306,9 +307,15 @@ export default {
 
             this.block = await loadBlockDetails(this.$props);
 
-            // v.1.0
-            // TODO: Enable these fields
-            // this.transactions = (await getBlockTransactions(this.$props)).transactions;
+            if (0 < this.$props.seqno) {
+              this.block.prev_blocks = [{
+                workchain: this.$props.workchain,
+                shard: this.$props.shard,
+                seqno: this.$props.seqno - 1
+              }];
+            }
+
+            this.transactions = await loadBlockTransactions(this.$props);
 
             if (this.isMasterChain) {
                 this.shards = (await getShards(this.$props)).shards;
