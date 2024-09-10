@@ -137,6 +137,24 @@
               </div>
             </div>
 
+            <div class="card-row" v-if=this.master_workchain>
+              <div class="card-row__name" v-text="'Master Block'"/>
+              <div class="card-row__value card-row__value--flex-row">
+                <div class="card-row">
+                  <div class="card-row__name">workchain</div>
+                  <div class="card-row__value">{{this.master_workchain}}</div>
+                </div>
+                <div class="card-row">
+                  <div class="card-row__name">shard</div>
+                  <div class="card-row__value">{{this.master_shard}}</div>
+                </div>
+                <div class="card-row">
+                  <div class="card-row__name">seqno</div>
+                  <a v-bind:href="this.masterBlockUri"><div class="card-row__value">{{this.master_seqno}}</div></a>
+                </div>
+              </div>
+            </div>
+
             <div class="card-row">
                 <div class="card-row__name" v-text="$t('tx.fee')"/>
                 <div class="card-row__value card-row__value--flex-row">
@@ -232,6 +250,7 @@ import { base64ToHex, hexToBase64, toBase64Web } from '~/utils.js';
 import { canonizeAddress } from '~/tonweb.js';
 import { getTransactionByHashOrInMessageHash, getTransactionByInMessageHash } from '~/api';
 import TxMsg from './TxMsg.vue';
+import {loadBlockDetails} from "~/api/toncenterV2";
 
 export default {
     props: {
@@ -261,6 +280,10 @@ export default {
             shard: 0,
             seqno: 0,
             blockUri: '#',
+            master_workchain: 0,
+            master_shard: 0,
+            master_seqno: 0,
+            masterBlockUri: `#`
         };
     },
 
@@ -309,7 +332,7 @@ export default {
                 ? getTransactionByInMessageHash
                 : getTransactionByHashOrInMessageHash;
 
-            apiMethod(this.hash).then((tx) => {
+            apiMethod(this.hash).then(async (tx) => {
                 this.address = canonizeAddress(tx.account);
                 this.type = tx.transaction_type;
 
@@ -367,6 +390,20 @@ export default {
                   const ORIGIN = document.location.origin;
                   if (block.workchain !== undefined && block.shard !== undefined && block.seqno !== undefined) {
                     this.blockUri = `${ORIGIN}/block/${block.workchain}:${block.shard}:${block.seqno}`;
+                  }
+
+                  const blockDetails = await loadBlockDetails({workchain, shard, seqno});
+                  if (blockDetails) {
+                    const masterChainBlock = blockDetails.masterchain_block_ref;
+                    if (masterChainBlock) {
+                      this.master_workchain = masterChainBlock.workchain;
+                      this.master_shard = masterChainBlock.shard;
+                      this.master_seqno = masterChainBlock.seqno;
+
+                      if (masterChainBlock.workchain !== undefined && masterChainBlock.shard !== undefined && masterChainBlock.seqno !== undefined) {
+                        this.masterBlockUri = `${ORIGIN}/block/${masterChainBlock.workchain}:${masterChainBlock.shard}:${masterChainBlock.seqno}`;
+                      }
+                    }
                   }
                 }
             })
