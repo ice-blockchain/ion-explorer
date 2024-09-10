@@ -33,7 +33,7 @@
                 <div class="card-row card-row--wide">
                     <div class="card-row__name">Root hash</div>
                     <div class="card-row__value">
-                        <span v-if="block.id" v-text="block.id.root_hash"/>
+                        <span v-if="block.root_hash" v-text="block.root_hash"/>
                         <span v-else class="skeleton">zMLQwaoiatVZRJ0PY019KkbRoJYQjNS6azjpVNbMsOQ=</span>
                     </div>
                 </div>
@@ -41,10 +41,31 @@
                 <div class="card-row card-row--wide">
                     <div class="card-row__name">File hash</div>
                     <div class="card-row__value">
-                        <span v-if="block.id" v-text="block.id.file_hash"/>
+                        <span v-if="block.file_hash" v-text="block.file_hash"/>
                         <span v-else class="skeleton">zMLQwaoiatVZRJ0PY019KkbRoJYQjNS6azjpVNbMsOQ=</span>
                     </div>
-                </div>    
+                </div>
+
+                <div class="card-title">
+                  <span v-if="!isMasterChain" v-text="$t('block.masterchain_block_title')"/>
+                </div>
+
+                <div class="card-row card-row--wide" v-if="!isMasterChain">
+                  <div class="card-row__name" v-text="$t('tx.workchain')"/>
+                  <div class="card-row__value" v-text="block.masterchain_block_ref?.workchain"/>
+                </div>
+
+                <div class="card-row card-row--wide" v-if="!isMasterChain">
+                  <div class="card-row__name" v-text="$t('tx.shard')"/>
+                  <div class="card-row__value" v-text="block.masterchain_block_ref?.shard"/>
+                </div>
+
+                <div class="card-row card-row--wide" v-if="!isMasterChain">
+                  <div class="card-row__name" v-text="$t('tx.seqno')"/>
+                  <a v-bind:href="this.masterChainBlockUri">
+                    <div class="card-row__value" v-text="block.masterchain_block_ref?.seqno"/>
+                  </a>
+                </div>
 
                 <div v-show="boringFieldsVisible">
                     <div class="card-row card-row--wide" v-for="field in boringFields">
@@ -186,7 +207,8 @@
 </template>
 
 <script>
-import { getBlockHeader, getBlockTransactions, getShards, getLastBlock } from '~/api';
+import { getShards, getLastBlock } from '~/api';
+import {loadBlockDetails} from "~/api/toncenterV2";
 import ShardSkeleton from './BlockShardSkeleton.vue';
 import TxSkeleton from './BlockTxSkeleton.vue';
 import TxRow from './BlockTxRow.vue';
@@ -209,7 +231,7 @@ export default {
 
     computed: {
         isMasterChain() {
-            return this.workchain == '-1';
+            return this.workchain === '-1';
         },
 
         hasPrevBlocks() {
@@ -217,7 +239,7 @@ export default {
         },
 
         txHistoryEmpty() {
-            return this.transactions && this.transactions.length == 0;
+            return this.transactions && this.transactions.length === 0;
         },
 
         txHistoryLoading() {
@@ -226,18 +248,29 @@ export default {
 
         prevBlockLinkParams() {
             return { ...this.$props,
-                seqno: parseInt(this.seqno) - 1,                
+                seqno: parseInt(this.seqno) - 1,
             };
         },
 
         nextBlockLinkParams() {
             return { ...this.$props,
-                seqno: parseInt(this.seqno) + 1,                
+                seqno: parseInt(this.seqno) + 1,
             };
         },
 
         boringFields() {
-            return ['global_id', 'version', 'after_merge', 'after_split', 'before_split', 'want_merge', 'want_split', 'validator_list_hash_short', 'catchain_seqno', 'min_ref_mc_seqno', 'is_key_block', 'prev_key_block_seqno', 'vert_seqno'];
+            return ['global_id', 'version', 'after_merge', 'after_split', 'before_split', 'want_merge', 'want_split', 'validator_list_hash_short', 'gen_catchain_seqno', 'min_ref_mc_seqno', 'key_block', 'prev_key_block_seqno', 'vert_seqno'];
+        },
+
+        // Build a link to the master-chain block
+        masterChainBlockUri() {
+          const masterChainBlock = this.block.masterchain_block_ref;
+          if (masterChainBlock) {
+            if (masterChainBlock.workchain !== undefined && masterChainBlock.shard !== undefined && masterChainBlock.seqno !== undefined) {
+              const ORIGIN = document.location.origin;
+              return `${ORIGIN}/block/${masterChainBlock.workchain}:${masterChainBlock.shard}:${masterChainBlock.seqno}`;
+            }
+          }
         },
     },
 
@@ -271,9 +304,11 @@ export default {
         async loadData() {
             this.reset();
 
-            this.block = await getBlockHeader(this.$props);
+            this.block = await loadBlockDetails(this.$props);
 
-            this.transactions = (await getBlockTransactions(this.$props)).transactions;
+            // v.1.0
+            // TODO: Enable these fields
+            // this.transactions = (await getBlockTransactions(this.$props)).transactions;
 
             if (this.isMasterChain) {
                 this.shards = (await getShards(this.$props)).shards;

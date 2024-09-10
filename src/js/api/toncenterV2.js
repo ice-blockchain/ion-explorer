@@ -15,6 +15,27 @@ const http = axios.create({
 });
 
 /**
+ * Loads the list, containing a single block, identified by the workchain / shard and sequence number.
+ *
+ * @param workchain
+ * @param shard
+ * @param seqno
+ * @returns {Promise<*>}
+ */
+export const loadBlockDetails = async function ({workchain, shard, seqno}) {
+
+    const results = await http.get('blocks', {
+        params: {
+            workchain,
+            shard,
+            seqno
+        }
+    })
+
+    return results.data[0];
+};
+
+/**
  * This function returns last blocks sorted by time.
  *
  * @param  {Numer} options.wc
@@ -49,6 +70,7 @@ export const getPreviousBlocks = async function ({ wc, limit, offset, startUtime
     //     return block.tx_count > 0;
     // });
 
+    // TODO: Enable HEX shards display
     result = result.filter((block) => {
         // Remove non-numeric shards like C0000....
         // https://tonviewer.com/block/(0,c000000000000000,41732614)

@@ -76,7 +76,7 @@ const router = new VueRouter({
             props: true,
         }, {
             name: 'block',
-            path: 'block/:workchain([\\-\\d]+)\::shard([\\-\\d]+)\::seqno([\\d]+)',
+            path: 'block/:workchain([\\-\\d]+)\::shard([A-Fa-f0-9]+)\::seqno([\\d]+)',
             component: PageBlock,
             meta: { title: 'ION Explorer :: Block' },
             props: true,
