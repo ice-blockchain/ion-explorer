@@ -29,7 +29,7 @@ export const isValidDomain = (input) => {
  * @return {Boolean}
  */
 export const isValidTxHash = (input) => {
-    return (input.length === 44 && input.endsWith('=')) || input.match(/^[\da-f]{64}$/);
+    return (input.length === 44 && input.endsWith('=')) || input.match(/^[\da-fA-F]{64}$/);
 };
 
 /**
