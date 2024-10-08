@@ -140,7 +140,7 @@ export default {
 
         return Object.freeze({
           localization: localization,
-          value: "$ " + prefixNumber(latestValue),
+          value: "$ " + prefixNumber(latestValue).replace(".", ","),
           change: valueDiff,
         });
       };

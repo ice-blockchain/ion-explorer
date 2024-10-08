@@ -34,7 +34,7 @@ export const createTooltipObject = function (context, tooltipEl) {
 
             // This is, probably, not the best solution to format the number, but still ..
             if (dataPoint.dataset.data[dataPoint.dataIndex].y) {
-                dataPoint.formattedValue = "" + prefixNumber(dataPoint.dataset.data[dataPoint.dataIndex].y);
+                dataPoint.formattedValue = prefixNumber(dataPoint.dataset.data[dataPoint.dataIndex].y).toString().replace(".", ",");
             }
 
             const tooltipColor = Array.isArray(color)
@@ -43,7 +43,7 @@ export const createTooltipObject = function (context, tooltipEl) {
 
             return Object.freeze({
                 color: tooltipColor,
-                value: dataPoint.formattedValue.replace(',', '.'),
+                value: dataPoint.formattedValue,
                 label: dataPoint.dataset.label,
                 suffix: dataPoint.dataset.suffix,
             });

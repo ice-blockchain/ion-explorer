@@ -73,7 +73,7 @@ export default {
             return this.change < 0 ? '−' : '+';
         },
         value() {
-            return Math.abs(this.change * 100).toFixed(2);
+            return Math.abs(this.change * 100).toFixed(2).toString().replace(".", ",");
         },
         range() {
             if (this.rangeDays <= 2) {
