@@ -458,7 +458,7 @@ export default {
         circulation: 'Circulation',
         total_supply: 'Total supply',
         percent_total_supply: '{total}% of total supply',
-        percent_inflation_rate: '0.6% annual inflation rate',
+        percent_inflation_rate: '6% annual inflation rate',
         validators: 'Validators',
         validators_amount: 'Validators',
         validators_election: 'Next round {n}',

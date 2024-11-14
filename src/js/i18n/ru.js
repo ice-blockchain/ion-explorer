@@ -456,7 +456,7 @@ export default {
         circulation: 'Циркуляция',
         total_supply: 'Общее предложение',
         percent_total_supply: '{total}% от общего объема предложения',
-        percent_inflation_rate: 'Годовая инфляция 0.6%',
+        percent_inflation_rate: 'Годовая инфляция 6%',
         validators: 'Валидаторы',
         validators_amount: 'Валидаторов',
         validators_election: 'Следующий раунд {n}',
