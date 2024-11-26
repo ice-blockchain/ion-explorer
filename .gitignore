@@ -1,8 +1,7 @@
 node_modules
 mix-manifest.json
 package-lock.json
-.env
-.env.testnet
+.env*
 dist/*
 addrbook.json
 build.zip
