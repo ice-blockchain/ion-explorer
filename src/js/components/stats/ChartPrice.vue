@@ -29,6 +29,7 @@ import {
 } from "~/helpers.js";
 import ChartColorSchemeMixin from '~/mixins/chartColorScheme.js';
 import { decimateData } from '~/decimation.js';
+import {ION_ANALYTICS_ENDPOINT} from "~/config";
 
 const decimatePrice = (dataset, offset) => {
   const updatedDataset = decimateDataset(dataset, offset);
@@ -130,7 +131,7 @@ export default {
 
     async loadData() {
       const { data } = await axios.get(
-        `https://analytics-api.testnet.ice.io/market?interval=${this.interval}`
+        `${ION_ANALYTICS_ENDPOINT}/market?interval=${this.interval}`
       );
 
       const calculate = (dataset, key, localization) => {
