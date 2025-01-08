@@ -114,7 +114,7 @@ export default {
 
             this.blocks = await getPreviousBlocks({ limit: takeCount });
 
-            this.mcHeight = this.blocks[0].seqno;
+            this.mcHeight = this.masterchainBlocks[0].seqno;
             this.lastBlockTime = this.masterchainBlocks[0].gen_utime - this.masterchainBlocks[1].gen_utime;
 
             const summary = await getOverview();
